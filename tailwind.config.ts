@@ -1,7 +1,7 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}',],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     colors: {
       white: "#ffffff",
@@ -35,7 +35,7 @@ const config: Config = {
         {
           lineHeight: "120px",
           letterSpacing: "-6px",
-          fontWeight: "500"
+          fontWeight: "500",
         },
       ],
       "7xl": [
@@ -43,7 +43,7 @@ const config: Config = {
         {
           lineHeight: "80px",
           letterSpacing: "-4.5px",
-          fontWeight: "600"
+          fontWeight: "600",
         },
       ],
       "6xl": [
@@ -51,7 +51,7 @@ const config: Config = {
         {
           lineHeight: "60px",
           letterSpacing: "-2.5px",
-          fontWeight: "500"
+          fontWeight: "500",
         },
       ],
       "5xl": [
@@ -59,7 +59,7 @@ const config: Config = {
         {
           lineHeight: "54px",
           letterSpacing: "-1.600000023841858px",
-          fontWeight: "500"
+          fontWeight: "500",
         },
       ],
       "4xl": [
@@ -67,7 +67,7 @@ const config: Config = {
         {
           lineHeight: "44px",
           letterSpacing: "-1.2000000476837158px",
-          fontWeight: "500"
+          fontWeight: "500",
         },
       ],
       "3xl": [
@@ -75,7 +75,7 @@ const config: Config = {
         {
           lineHeight: "34px",
           letterSpacing: "-0.800000011920929px",
-          fontWeight: "500"
+          fontWeight: "500",
         },
       ],
       "2xl": [
@@ -83,82 +83,82 @@ const config: Config = {
         {
           lineHeight: "30px",
           letterSpacing: "-1px",
-          fontWeight: "400"
+          fontWeight: "400",
         },
       ],
-      "xl": [
+      xl: [
         "24px",
         {
           lineHeight: "30px",
           letterSpacing: "-1px",
-          fontWeight: "400"
+          fontWeight: "400",
         },
       ],
-      "lg": [
+      lg: [
         "21px",
         {
           lineHeight: "30px",
           letterSpacing: "-0.800000011920929px",
-          fontWeight: "400"
+          fontWeight: "400",
         },
       ],
-      "base": [
+      base: [
         "17px",
         {
           lineHeight: "25px",
           letterSpacing: "-0.699999988079071px",
-          fontWeight: "400"
+          fontWeight: "400",
         },
       ],
-      "sm": [
+      sm: [
         "15px",
         {
           lineHeight: "23px",
           letterSpacing: "-0.6000000238418579px",
-          fontWeight: "400"
+          fontWeight: "400",
         },
       ],
-      "caption1": [
+      caption1: [
         "20px",
         {
           lineHeight: "24px",
           letterSpacing: "-0.6000000238418579px",
-          fontWeight: "400"
+          fontWeight: "400",
         },
       ],
-      "caption2": [
+      caption2: [
         "18px",
         {
           lineHeight: "20px",
           letterSpacing: "-0.30000001192092896px",
-          fontWeight: "400"
+          fontWeight: "400",
         },
       ],
-      "caption3": [
+      caption3: [
         "15px",
         {
           lineHeight: "18px",
           letterSpacing: "-0.5px",
-          fontWeight: "400"
+          fontWeight: "400",
         },
       ],
-      "caption4": [
+      caption4: [
         "13px",
         {
           lineHeight: "15px",
           letterSpacing: "-0.20000000298023224px",
-          fontWeight: "400"
+          fontWeight: "400",
         },
       ],
     },
 
     borderRadius: {
       DEFAULT: "10px",
-      full: "50%"
+      full: "50%",
     },
 
     extend: {},
   },
   plugins: [],
-}
-export default config
+};
+export default config;
