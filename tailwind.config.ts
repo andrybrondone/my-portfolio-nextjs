@@ -8,16 +8,16 @@ const config: Config = {
       primary: {
         200: "#efeffc",
         300: "#cfd0f6",
-        400: "#7f81e8",
-        DEFAULT: "#5f62e2",
-        600: "#5658cb",
+        400: "#f30835",
+        DEFAULT: "#f30850",
+        600: "#f30820",
       },
       secondary: {
         200: "#eaf8f4",
-        300: "#bfe9de",
-        400: "#56c4a7",
-        DEFAULT: "#2ab691",
-        600: "#26a482",
+        300: "#a3daff",
+        400: "#4ab7ff",
+        DEFAULT: "#139cf7",
+        600: "#0284FC",
       },
       gray: {
         400: "#f2f2f2",
@@ -31,7 +31,7 @@ const config: Config = {
 
     fontSize: {
       "8xl": [
-        "120px",
+        "100px",
         {
           lineHeight: "120px",
           letterSpacing: "-6px",
@@ -39,7 +39,7 @@ const config: Config = {
         },
       ],
       "7xl": [
-        "72px",
+        "62px",
         {
           lineHeight: "80px",
           letterSpacing: "-4.5px",
@@ -47,7 +47,7 @@ const config: Config = {
         },
       ],
       "6xl": [
-        "55px",
+        "50px",
         {
           lineHeight: "60px",
           letterSpacing: "-2.5px",
@@ -119,7 +119,7 @@ const config: Config = {
         },
       ],
       caption1: [
-        "20px",
+        "18px",
         {
           lineHeight: "24px",
           letterSpacing: "-0.6000000238418579px",
@@ -127,7 +127,7 @@ const config: Config = {
         },
       ],
       caption2: [
-        "18px",
+        "16px",
         {
           lineHeight: "20px",
           letterSpacing: "-0.30000001192092896px",
@@ -135,7 +135,7 @@ const config: Config = {
         },
       ],
       caption3: [
-        "15px",
+        "14px",
         {
           lineHeight: "18px",
           letterSpacing: "-0.5px",
@@ -143,7 +143,7 @@ const config: Config = {
         },
       ],
       caption4: [
-        "13px",
+        "12px",
         {
           lineHeight: "15px",
           letterSpacing: "-0.20000000298023224px",

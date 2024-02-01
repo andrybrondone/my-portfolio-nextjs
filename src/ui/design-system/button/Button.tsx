@@ -1,5 +1,7 @@
+import { LinkType } from "@/lib/link-type";
 import { IconProps } from "@/types/iconProps";
 import clsx from "clsx";
+import Link from "next/link";
 import { Spinner } from "../spinner/Spinner";
 
 interface Props {
@@ -11,6 +13,9 @@ interface Props {
   disabled?: boolean;
   isLoading?: boolean;
   children?: React.ReactNode;
+  baseUrl?: string;
+  linkType?: LinkType;
+  action?: Function;
 }
 
 export const Button = ({
@@ -22,6 +27,9 @@ export const Button = ({
   disabled,
   isLoading,
   children,
+  baseUrl,
+  linkType = "internal",
+  action = () => {},
 }: Props) => {
   let variantStyle: string = "",
     sizeStyle: string = "",
@@ -57,7 +65,7 @@ export const Button = ({
           "bg-primary-200 hover:bg-primary-300/50 text-primary rounded-full";
       }
       if (iconTheme === "gray") {
-        variantStyle = "bg-gray-700 hover:bg-gray-600 text-white rounded-full";
+        variantStyle = "bg-gray-800 hover:bg-gray-700 text-white rounded-full";
       }
       break;
   }
@@ -76,57 +84,81 @@ export const Button = ({
       sizeStyle = `text-caption2 font-medium ${
         variant === "ico"
           ? "flex items-center justify-center w-[50px] h-[50px]"
-          : "px-[18px] py-[15px]"
+          : "px-[18px] py-[14px]"
       }`;
-      icoSize = 20;
+      icoSize = 24;
       break;
 
     case "large":
       sizeStyle = `text-caption1 font-medium ${
         variant === "ico"
           ? "flex items-center justify-center w-[60px] h-[60px]"
-          : "px-[22px] py-[18px]"
+          : "px-[20px] py-[14px]"
       }`;
-      icoSize = 24;
+      icoSize = 26;
       break;
   }
 
-  return (
-    <>
-      <button
-        type="button"
-        className={clsx(
-          variantStyle,
-          sizeStyle,
-          icoSize,
-          isLoading && "cursor-wait",
-          "relative"
-        )}
-        onClick={() => console.log("click qu mercj")}
-        disabled={disabled}
-      >
-        {isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            {variant === "accent" || variant === "ico" ? (
-              <Spinner size="small" variant="white" />
-            ) : (
-              <Spinner size="small" />
-            )}
-          </div>
-        )}
+  const hundleClick = () => {
+    if (action) {
+      action();
+    }
+  };
 
-        <div className={clsx(isLoading && "invisible")}>
-          {icon && variant === "ico" ? (
-            <icon.icon size={icoSize} />
+  const buttonContent = (
+    <>
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          {variant === "accent" || variant === "ico" ? (
+            <Spinner size="small" variant="white" />
           ) : (
-            <div className={clsx(icon && "flex items-center gap-1")}>
-              {icon && iconPosition === "left" && <icon.icon size={icoSize} />}
-              {children}
-              {icon && iconPosition === "right" && <icon.icon size={icoSize} />}
-            </div>
+            <Spinner size="small" />
           )}
         </div>
-      </button>
+      )}
+
+      <div className={clsx(isLoading && "invisible")}>
+        {icon && variant === "ico" ? (
+          <icon.icon size={icoSize} />
+        ) : (
+          <div className={clsx(icon && "flex items-center gap-1")}>
+            {icon && iconPosition === "left" && <icon.icon size={icoSize} />}
+            {children}
+            {icon && iconPosition === "right" && <icon.icon size={icoSize} />}
+          </div>
+        )}
+      </div>
     </>
   );
+
+  const buttonElement = (
+    <button
+      type="button"
+      className={clsx(
+        variantStyle,
+        sizeStyle,
+        icoSize,
+        isLoading ? "cursor-wait" : "hover:translate-x-0.5",
+        "relative animate"
+      )}
+      onClick={hundleClick}
+      disabled={disabled}
+    >
+      {buttonContent}
+    </button>
+  );
+
+  if (baseUrl) {
+    if (linkType === LinkType.EXTERNAL) {
+      return (
+        <a href={baseUrl} target="_blank">
+          {buttonElement}
+        </a>
+      );
+    } else {
+      return <Link href={baseUrl}>{buttonElement}</Link>;
+    }
+  }
+
+  return buttonElement;
 };
