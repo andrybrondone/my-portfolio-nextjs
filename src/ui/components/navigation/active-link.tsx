@@ -19,9 +19,10 @@ export const ActiveLink = ({ href, children }: Props) => {
     <Link
       href={href}
       className={clsx(
+        "pt-5 pb-5",
         isActive
-          ? "text-secondary-600 font-medium hover:pb-0 hover:text-secondary-600"
-          : "hover:pb-1.5"
+          ? "text-secondary-600 font-medium hover:text-secondary-600"
+          : "hover:translate-y-[-5px]"
       )}
     >
       {children}

@@ -20,6 +20,7 @@ const config: Config = {
         600: "#0284FC",
       },
       gray: {
+        300: "#fafafa",
         400: "#f2f2f2",
         500: "#e5e5e5",
         600: "#b2b2b2",
@@ -27,35 +28,40 @@ const config: Config = {
         800: "#333333",
         DEFAULT: "#1d1d1d",
       },
+      alert: {
+        danger: "#FF4E4E",
+        success: "#90DA1A",
+        warning: "#FEB72F",
+      },
     },
 
     fontSize: {
       "8xl": [
-        "100px",
+        "70px",
         {
-          lineHeight: "120px",
-          letterSpacing: "-6px",
+          lineHeight: "95px",
+          letterSpacing: "-5px",
           fontWeight: "500",
         },
       ],
       "7xl": [
-        "62px",
+        "50px",
         {
-          lineHeight: "80px",
-          letterSpacing: "-4.5px",
+          lineHeight: "70px",
+          letterSpacing: "-2px",
           fontWeight: "600",
         },
       ],
       "6xl": [
-        "50px",
+        "40px",
         {
-          lineHeight: "60px",
-          letterSpacing: "-2.5px",
+          lineHeight: "50px",
+          letterSpacing: "-2px",
           fontWeight: "500",
         },
       ],
       "5xl": [
-        "48px",
+        "35px",
         {
           lineHeight: "54px",
           letterSpacing: "-1.600000023841858px",
@@ -63,7 +69,7 @@ const config: Config = {
         },
       ],
       "4xl": [
-        "36px",
+        "30px",
         {
           lineHeight: "44px",
           letterSpacing: "-1.2000000476837158px",
@@ -71,7 +77,7 @@ const config: Config = {
         },
       ],
       "3xl": [
-        "28px",
+        "25px",
         {
           lineHeight: "34px",
           letterSpacing: "-0.800000011920929px",
@@ -79,7 +85,7 @@ const config: Config = {
         },
       ],
       "2xl": [
-        "24px",
+        "23px",
         {
           lineHeight: "30px",
           letterSpacing: "-1px",
@@ -87,7 +93,7 @@ const config: Config = {
         },
       ],
       xl: [
-        "24px",
+        "22px",
         {
           lineHeight: "30px",
           letterSpacing: "-1px",
@@ -103,7 +109,7 @@ const config: Config = {
         },
       ],
       base: [
-        "17px",
+        "20px",
         {
           lineHeight: "25px",
           letterSpacing: "-0.699999988079071px",
@@ -111,9 +117,9 @@ const config: Config = {
         },
       ],
       sm: [
-        "15px",
+        "19px",
         {
-          lineHeight: "23px",
+          lineHeight: "28px",
           letterSpacing: "-0.6000000238418579px",
           fontWeight: "400",
         },
@@ -127,7 +133,7 @@ const config: Config = {
         },
       ],
       caption2: [
-        "16px",
+        "17px",
         {
           lineHeight: "20px",
           letterSpacing: "-0.30000001192092896px",
@@ -135,7 +141,7 @@ const config: Config = {
         },
       ],
       caption3: [
-        "14px",
+        "16px",
         {
           lineHeight: "18px",
           letterSpacing: "-0.5px",
@@ -143,7 +149,7 @@ const config: Config = {
         },
       ],
       caption4: [
-        "12px",
+        "14px",
         {
           lineHeight: "15px",
           letterSpacing: "-0.20000000298023224px",

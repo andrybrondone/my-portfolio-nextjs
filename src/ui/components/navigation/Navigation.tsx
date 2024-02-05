@@ -8,25 +8,29 @@ import { ActiveLink } from "./active-link";
 interface Props {}
 
 export const Navigation = ({}: Props) => {
+  const scrollPositions = {
+    home: 0,
+    about: 750,
+  };
   return (
     <div className="border-b-2 border-gray-500">
-      <Container className=" flex items-center justify-between py-1.5 gap-7">
+      <Container className=" flex items-center justify-between py-3 gap-7">
         <Link href="/">
           <div className=" flex items-center gap-2.5">
             <Logo size="small" />
             <div className=" flex flex-col">
-              <div className="text-gray font-extrabold text-[24px]">
+              <div className="text-gray font-extrabold text-[32px]">
                 Mon Portfolio
               </div>
-              <Typography variant="caption4" theme="gray" component="span">
+              <Typography variant="caption3" theme="gray" component="span">
                 Lorem ipsum dolor sit amet consectetur.
               </Typography>
             </div>
           </div>
         </Link>
-        <div className=" flex items-center gap-7 pb-3">
+        <div className=" flex items-center gap-7">
           <Typography
-            variant="caption3"
+            variant="caption2"
             component="div"
             className="flex items-center gap-7"
           >
