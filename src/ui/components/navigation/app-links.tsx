@@ -27,7 +27,7 @@ const footerApplicationLinks: AppLinks[] = [
     type: "internal",
   },
 ];
-const footerUsersLinks: AppLinks[] = [
+/*const footerUsersLinks: AppLinks[] = [
   {
     label: "Mon espace",
     baseUrl: "/#",
@@ -65,7 +65,7 @@ const fooInformationLink: AppLinks[] = [
     baseUrl: "/competence",
     type: "internal",
   },
-];
+];*/
 export const footerSocialNetworksLink: AppLinks[] = [
   {
     label: "Facebook",
@@ -92,14 +92,14 @@ export const footerLinks = [
     label: "App",
     links: footerApplicationLinks,
   },
-  {
+  /* {
     label: "Utilisateur",
     links: footerUsersLinks,
   },
   {
     label: "Information",
     links: fooInformationLink,
-  },
+  },*/
   {
     label: "Réseaux",
     links: footerSocialNetworksLink,

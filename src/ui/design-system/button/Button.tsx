@@ -18,9 +18,11 @@ interface Props {
   action?: Function;
   type?: "button" | "submit";
   fullWith?: boolean;
+  className?: string;
 }
 
 export const Button = ({
+  className,
   size = "medium",
   variant = "accent",
   icon,
@@ -139,12 +141,15 @@ export const Button = ({
     <button
       type={type}
       className={clsx(
+        className,
         variantStyle,
         sizeStyle,
         icoSize,
-        isLoading ? "cursor-not-allowed" : "hover:translate-x-0.5",
+        isLoading || disabled
+          ? "cursor-not-allowed"
+          : "hover:translate-x-0.5 shadow-md hover:shadow-xl",
         fullWith && "w-full",
-        "relative animate shadow-md hover:shadow-xl"
+        "relative animate"
       )}
       onClick={hundleClick}
       disabled={disabled || isLoading ? true : false}

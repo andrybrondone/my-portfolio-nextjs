@@ -4,7 +4,6 @@ import { Typography } from "../typography/Typography";
 interface Props {
   isLoading: boolean;
   placeholder: string;
-  type?: "text" | "textarea" | "email";
   register: any;
   errors: any;
   errorMsg?: string;
@@ -13,10 +12,9 @@ interface Props {
   isAutocompleted?: boolean;
 }
 
-export const Input = ({
+export const Textarea = ({
   isLoading,
   placeholder,
-  type = "text",
   register,
   errors,
   errorMsg = "Ce champ doit être renseigner",
@@ -26,14 +24,14 @@ export const Input = ({
 }: Props) => {
   return (
     <div className="space-y-2">
-      <input
-        type={type}
+      <textarea
+        rows="4"
         placeholder={placeholder}
         className={clsx(
           isLoading && "cursor-not-allowed",
           errors[id]
             ? "placeholder-alert-danger text-alert-danger border-alert-danger"
-            : "placeholder-gray-700 border-gray-400",
+            : " placeholder-gray-700 border-gray-400",
           "w-full p-4 font-light border rounded focus:outline-none focus:ring-1 focus:ring-secondary"
         )}
         disabled={isLoading}
@@ -44,7 +42,8 @@ export const Input = ({
           },
         })}
         autoComplete={isAutocompleted ? "on" : "off"}
-      />
+      ></textarea>
+
       {errors[id] && (
         <Typography variant="caption4" component="div" theme="danger">
           {errors[id]?.message}

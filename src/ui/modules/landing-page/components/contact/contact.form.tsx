@@ -1,7 +1,7 @@
 import { FormsType } from "@/types/forms";
 import { Button } from "@/ui/design-system/button/Button";
 import { Input } from "@/ui/design-system/forms/Input";
-import { RiMailSendLine } from "react-icons/ri";
+import { Textarea } from "@/ui/design-system/forms/Textarea";
 
 interface Props {
   form: FormsType;
@@ -28,10 +28,9 @@ export const ContactForm = ({ form }: Props) => {
         errorMsg="Champ obligatoire"
         id="object"
       />
-      <Input
+      <Textarea
         isLoading={isLoading}
         placeholder="Message"
-        type="textarea"
         register={register}
         errors={errors}
         errorMsg="Champ obligatoire"
@@ -40,8 +39,9 @@ export const ContactForm = ({ form }: Props) => {
       <Button
         isLoading={isLoading}
         type="submit"
+        variant="disabled"
         fullWith
-        icon={{ icon: RiMailSendLine }}
+        disabled
       >
         Envoyer
       </Button>

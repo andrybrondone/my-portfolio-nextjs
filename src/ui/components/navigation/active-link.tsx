@@ -19,13 +19,20 @@ export const ActiveLink = ({ href, children }: Props) => {
     <Link
       href={href}
       className={clsx(
-        "pt-5 pb-5",
-        isActive
-          ? "text-secondary-600 font-medium hover:text-secondary-600"
-          : "hover:translate-y-[-5px]"
+        "pt-5 pb-5 relative group",
+        isActive && "text-secondary-600 font-medium hover:text-secondary-600"
       )}
     >
       {children}
+
+      <span
+        className={clsx(
+          !isActive &&
+            "h-[1.52px] inline-block w-0 bg-secondary-400 absolute left-0 bottom-2 group-hover:w-full transition-[width] ease-in-out duration-300"
+        )}
+      >
+        &nbsp;
+      </span>
     </Link>
   );
 };

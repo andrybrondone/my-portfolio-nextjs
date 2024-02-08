@@ -1,6 +1,5 @@
 import { useToggle } from "@/hooks/useToggle";
 import { ContactFormFielsType } from "@/types/forms";
-import { Button } from "@/ui/design-system/button/Button";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ContactView } from "./contact.view";
 
@@ -21,7 +20,6 @@ export const ContactContainer = () => {
 
   return (
     <>
-      <Button action={toggle}>clik me</Button>
       <ContactView
         form={{
           errors,

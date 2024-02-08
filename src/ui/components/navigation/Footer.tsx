@@ -2,10 +2,10 @@ import { LinkType } from "@/lib/link-type";
 import { FooterLinks } from "@/types/app-links";
 import { Logo } from "@/ui/design-system/logo/Logo";
 import { Typography } from "@/ui/design-system/typography/Typography";
+import Image from "next/image";
 import Link from "next/link";
 import { v4 as uuidv4 } from "uuid";
 import { Container } from "../container/Container";
-import { ActiveLink } from "./active-link";
 import { footerLinks } from "./app-links";
 import { SocialNetworksButtons } from "./social-networks-buttons";
 
@@ -18,7 +18,7 @@ export const Footer = () => {
 
   return (
     <div className="bg-gray">
-      <Container className="flex items-center justify-between pt-16">
+      <Container className="flex items-center justify-between pt-16 gap-7">
         <div className="flex flex-col items-center gap-1">
           <Typography variant="body-lg" theme="white" weight="medium">
             Portfolio
@@ -28,7 +28,14 @@ export const Footer = () => {
           </Typography>
           <Logo size="large" />
         </div>
-        <div className="flex gap-7">{footerNavigationList}</div>
+        <div className="relative w-[300px] h-[200px]">
+          <Image
+            fill
+            src={"/assets/images/emoji-g0bf5c5369_1920.png"}
+            alt="image"
+          />
+        </div>
+        <div className="flex gap-4">{footerNavigationList}</div>
       </Container>
       <Container className="pt-9 pb-6 space-y-11">
         <hr className="text-gray-800" />
@@ -54,7 +61,7 @@ const FooterLink = ({ data }: footerLinkProps) => {
   const linkList = data.links.map((link) => (
     <div key={uuidv4()}>
       {link.type === LinkType.INTERNAL && (
-        <ActiveLink href={link.baseUrl}>{link.label}</ActiveLink>
+        <Link href={link.baseUrl}>{link.label}</Link>
       )}
       {link.type === LinkType.EXTERNAL && (
         <a href={link.baseUrl} target="_blank">

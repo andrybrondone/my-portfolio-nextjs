@@ -24,7 +24,7 @@ export const ContactView = ({ form }: Props) => {
       <div className="flex items-center">
         <Box>
           <Typography variant="h5" component="h1" className=" text-center">
-            Contact
+            Pour me contacter
           </Typography>
 
           <ContactForm form={form} />

@@ -34,7 +34,7 @@ export const Navigation = ({}: Props) => {
             component="div"
             className="flex items-center gap-7"
           >
-            <ActiveLink href="/design-system">Desing System</ActiveLink>
+            {/* <ActiveLink href="/design-system">Desing System</ActiveLink> */}
             <ActiveLink href="/">Accueil</ActiveLink>
             <ActiveLink href="/a-propos">A propos</ActiveLink>
             <ActiveLink href="/competence">Compétence</ActiveLink>

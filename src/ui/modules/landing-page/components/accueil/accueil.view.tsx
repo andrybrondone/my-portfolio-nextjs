@@ -6,7 +6,7 @@ import Image from "next/image";
 export const AccueilView = () => {
   return (
     <Container className="flex items-center justify-between pt-2 pb-10 overflow-hidden">
-      <div className="bg-gray-400 w-[500px] h-[585px] rounded-se-[430px] rounded-es-full">
+      <div className="w-[500px] h-[585px] rounded-se-[430px] rounded-es-full">
         <Image
           priority={true}
           src="/assets/svg/me.svg"

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 a:hover {
-  @apply text-secondary-400;
+  @apply text-secondary;
 }
 
 /* .animate {
@@ -32,7 +32,7 @@ a:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-primary;
+  @apply bg-secondary;
   border-radius: 20px;
   width: 2px;
   height: 5px;
@@ -40,6 +40,6 @@ a:hover {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary-600;
+  @apply bg-secondary-600;
   /* Couleur du curseur au survol */
 }
