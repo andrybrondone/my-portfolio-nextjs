@@ -2,13 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Largeur de la scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: blue;
+}
+
 a:hover {
   @apply text-secondary;
 }
-
-/* .animate {
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
-} */
 
 .animate,
 a,
@@ -27,7 +29,7 @@ a:hover {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-secondary-300;
+  background: transparent;
   /* Couleur de fond de la piste */
 }
 

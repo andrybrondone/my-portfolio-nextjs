@@ -69,19 +69,19 @@ const fooInformationLink: AppLinks[] = [
 export const footerSocialNetworksLink: AppLinks[] = [
   {
     label: "Facebook",
-    baseUrl: "/#",
+    baseUrl: "https://facebook.com/bron.don.714",
     type: "external",
     icon: RiFacebookCircleFill,
   },
   {
     label: "LinkedIn",
-    baseUrl: "/#",
+    baseUrl: "https://linkedin.com/in/brondone-andriambololomanana",
     type: "external",
     icon: RiLinkedinFill,
   },
   {
     label: "Github",
-    baseUrl: "/#",
+    baseUrl: "https://github.com/andrybrondone",
     type: "external",
     icon: RiGithubFill,
   },
