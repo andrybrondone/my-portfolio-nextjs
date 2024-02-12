@@ -2,13 +2,10 @@ import { FormsType } from "@/types/forms";
 import { Container } from "@/ui/components/container/Container";
 import { Box } from "@/ui/design-system/box/box";
 import { Typography } from "@/ui/design-system/typography/Typography";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import {
-  RiMailSendLine,
-  RiMessengerLine,
-  RiWhatsappLine,
-} from "react-icons/ri";
+import { RiAtLine, RiMessengerLine, RiWhatsappLine } from "react-icons/ri";
 import { v4 as uuidv4 } from "uuid";
 import { ContactForm } from "./contact.form";
 
@@ -34,7 +31,7 @@ const contactData: ContactProps[] = [
     link: "/",
   },
   {
-    icon: <RiMailSendLine />,
+    icon: <RiAtLine />,
     description: "andry.brondone@gmail.com",
     link: "/",
   },
@@ -59,6 +56,13 @@ export const ContactView = ({ form }: Props) => {
     <Container className="grid grid-cols-2 gap-10 mb-20">
       <div className="flex items-center" id="projet">
         <div className="relative w-96 h-[531px] flex flex-col justify-end left-24">
+          <Image
+            src="/assets/images/phone.png"
+            alt="contact"
+            width={400}
+            height={300}
+            className="mb-4"
+          />
           {contactLst}
         </div>
       </div>
