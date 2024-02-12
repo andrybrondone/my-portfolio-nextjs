@@ -3,7 +3,7 @@ import { SocialNetworksButtons } from "@/ui/components/navigation/social-network
 import { Button } from "@/ui/design-system/button/Button";
 import { Typography } from "@/ui/design-system/typography/Typography";
 import Image from "next/image";
-import { RiDownload2Line } from "react-icons/ri";
+import { RiDownload2Line, RiPhoneLine, RiPhoneLockLine } from "react-icons/ri";
 import { v4 as uuidv4 } from "uuid";
 
 interface AboutListInterface {
@@ -84,7 +84,7 @@ export const AboutView = () => {
   ));
 
   return (
-    <div className="bg-gray-300 mb-10 ">
+    <div className="bg-gray-300 mb-10 " id="a-propos">
       <Container className="grid grid-cols-12 gap-24 py-24">
         <div className="col-span-7 grid grid-cols-2 gap-7">{aboutLst}</div>
         <div className="flex flex-col justify-between col-span-5 gap-10">
@@ -104,10 +104,10 @@ export const AboutView = () => {
             <Button
               variant="secondary"
               baseUrl="/#"
-              icon={{ icon: RiDownload2Line }}
-              iconPosition="right"
+              icon={{ icon: RiPhoneLine }}
+              iconPosition="left"
             >
-              Télécharger mon CV
+              Me contacter
             </Button>
           </div>
           <div>

@@ -8,37 +8,35 @@ import { ActiveLink } from "./active-link";
 interface Props {}
 
 export const Navigation = ({}: Props) => {
-  const scrollPositions = {
-    home: 0,
-    about: 750,
-  };
   return (
     <div className="border-b-2 border-gray-500">
-      <Container className=" flex items-center justify-between py-3 gap-7">
+      <Container className=" flex items-center justify-between gap-7">
         <Link href="/">
           <div className=" flex items-center gap-2.5">
             <Logo size="small" />
-            <div className=" flex flex-col">
-              <div className="text-gray font-extrabold text-[32px]">
-                Mon Portfolio
-              </div>
-              <Typography variant="caption3" theme="gray" component="span">
-                Lorem ipsum dolor sit amet consectetur.
+            <div className="flex flex-col pt-1.5">
+              <div className="text-gray font-bold text-[38px]">Bienvenue</div>
+              <Typography
+                variant="body-lg"
+                theme="gray"
+                component="span"
+                className=" -translate-y-3"
+              >
+                Ici vous pouvez en savoir davantage sur moi !
               </Typography>
             </div>
           </div>
         </Link>
         <div className=" flex items-center gap-7">
           <Typography
-            variant="caption2"
+            variant="body-base"
             component="div"
             className="flex items-center gap-7"
           >
             {/* <ActiveLink href="/design-system">Desing System</ActiveLink> */}
             <ActiveLink href="/">Accueil</ActiveLink>
-            <ActiveLink href="/a-propos">A propos</ActiveLink>
-            <ActiveLink href="/competence">Compétence</ActiveLink>
-            <ActiveLink href="/projet">Projet</ActiveLink>
+            <ActiveLink href="/#a-propos">A propos</ActiveLink>
+            <ActiveLink href="/#projet">Projet</ActiveLink>
           </Typography>
           <div className="flex items-center gap-2">
             <Button size="small">Contact</Button>

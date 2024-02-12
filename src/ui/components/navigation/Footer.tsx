@@ -20,10 +20,10 @@ export const Footer = () => {
     <div className="bg-gray">
       <Container className="flex items-center justify-between pt-16 gap-7">
         <div className="flex flex-col items-center gap-1">
-          <Typography variant="body-lg" theme="white" weight="medium">
+          <Typography variant="lead" theme="white" weight="medium">
             Portfolio
           </Typography>
-          <Typography variant="caption1" theme="gray">
+          <Typography variant="body-base" theme="gray">
             Brondone Andriambololomanana
           </Typography>
           <Logo size="large" />
@@ -73,15 +73,10 @@ const FooterLink = ({ data }: footerLinkProps) => {
 
   return (
     <div className="min-w-[190px]">
-      <Typography
-        theme="white"
-        variant="body-lg"
-        weight="medium"
-        className="pb-5"
-      >
+      <Typography theme="white" variant="lead" weight="medium" className="pb-5">
         {data.label}
       </Typography>
-      <Typography theme="gray" variant="caption1" className="space-y-4">
+      <Typography theme="gray" variant="body-base" className="space-y-4">
         {linkList}
       </Typography>
     </div>

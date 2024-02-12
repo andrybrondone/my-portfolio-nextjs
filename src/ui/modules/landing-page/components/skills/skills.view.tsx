@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export const SkillsView = () => {
   return (
-    <Container className="flex items-center justify-evenly my-20">
+    <Container className="flex justify-evenly items-center my-8">
       <div className="flex flex-col justify-center max-w-2xl space-y-5">
         <div className="flex items-center gap-2">
           <Logo size="very-small" />

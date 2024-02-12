@@ -28,7 +28,7 @@ export const ActiveLink = ({ href, children }: Props) => {
       <span
         className={clsx(
           !isActive &&
-            "h-[1.52px] inline-block w-0 bg-secondary-400 absolute left-0 bottom-2 group-hover:w-full transition-[width] ease-in-out duration-300"
+            "h-[1.52px] inline-block w-0 bg-secondary-400 absolute left-0 bottom-2 group-hover:w-full transition-[width] ease-in-out duration-300 hover:font-medium"
         )}
       >
         &nbsp;

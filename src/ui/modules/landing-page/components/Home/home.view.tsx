@@ -2,6 +2,7 @@ import { Container } from "@/ui/components/container/Container";
 import { Button } from "@/ui/design-system/button/Button";
 import { Typography } from "@/ui/design-system/typography/Typography";
 import Image from "next/image";
+import { RiDownload2Line } from "react-icons/ri";
 
 export const AccueilView = () => {
   return (
@@ -11,7 +12,7 @@ export const AccueilView = () => {
           priority={true}
           src="/assets/svg/me.svg"
           alt="Ma photo"
-          width={500}
+          width={495}
           height={585}
           className="rounded-se-[430px] rounded-es-full"
         />
@@ -40,7 +41,9 @@ export const AccueilView = () => {
           enim.
         </Typography>
         <div className="space-x-5 pt-2.5">
-          <Button baseUrl="/#">Commencer</Button>
+          <Button baseUrl="/#" icon={{ icon: RiDownload2Line }}>
+            Résumé
+          </Button>
           <Button baseUrl="/#" variant="secondary">
             En savoir plus
           </Button>

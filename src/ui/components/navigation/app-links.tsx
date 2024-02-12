@@ -17,11 +17,6 @@ const footerApplicationLinks: AppLinks[] = [
     type: "internal",
   },
   {
-    label: "Compétence",
-    baseUrl: "/competence",
-    type: "internal",
-  },
-  {
     label: "Projet",
     baseUrl: "/projet",
     type: "internal",
