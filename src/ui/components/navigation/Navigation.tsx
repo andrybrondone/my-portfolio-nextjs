@@ -39,7 +39,9 @@ export const Navigation = ({}: Props) => {
             <ActiveLink href="/#projet">Projet</ActiveLink>
           </Typography>
           <div className="flex items-center gap-2">
-            <Button size="small">Contact</Button>
+            <Button size="small" baseUrl="/#contact">
+              Contact
+            </Button>
           </div>
         </div>
       </Container>

@@ -11,6 +11,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  scroll-behavior: smooth;
+}
+
 a:hover {
   @apply text-secondary;
 }
@@ -25,10 +30,15 @@ a:hover {
   transition: all 0.2s ease;
 }
 
+.word-space {
+  word-spacing: 5px;
+}
+
 /* Styles personnalisés pour la scrollbar */
 ::-webkit-scrollbar {
+  height: 12px;
   width: 5px;
-  /* Largeur de la scrollbar */
+  @apply bg-white
 }
 
 ::-webkit-scrollbar-track {
@@ -39,12 +49,18 @@ a:hover {
 ::-webkit-scrollbar-thumb {
   @apply bg-secondary;
   border-radius: 20px;
-  width: 2px;
-  height: 5px;
+  -webkit-border-radius: 1ex;
   /* Couleur du curseur */
 }
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-secondary-600;
   /* Couleur du curseur au survol */
+}
+
+
+
+
+::-webkit-scrollbar-corner {
+  @apply bg-secondary-600;
 }

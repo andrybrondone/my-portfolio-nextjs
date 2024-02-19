@@ -41,7 +41,7 @@ export const ContactView = ({ form }: Props) => {
   const contactLst = contactData.map((contact) => (
     <Link key={uuidv4()} href={contact.link}>
       <Box
-        className="flex flex-col items-center gap-1 bg-white border  rounded my-2 shadow animate hover:translate-x-2"
+        className="flex flex-col items-center gap-1 bg-white border  rounded my-2 shadow animate hover:-translate-y-0.5"
         padding_y="py-2"
       >
         <div className=" text-4xl text-secondary">{contact.icon}</div>
@@ -53,8 +53,8 @@ export const ContactView = ({ form }: Props) => {
   ));
 
   return (
-    <Container className="grid grid-cols-2 gap-10 mb-20">
-      <div className="flex items-center" id="projet">
+    <Container className="grid grid-cols-2 gap-10 py-20" id="contact">
+      <div className="flex items-center">
         <div className="relative w-96 h-[531px] flex flex-col justify-end left-24">
           <Image
             src="/assets/images/phone.png"

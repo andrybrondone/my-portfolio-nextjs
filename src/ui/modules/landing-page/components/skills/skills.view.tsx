@@ -3,7 +3,6 @@ import { Container } from "@/ui/components/container/Container";
 import { Button } from "@/ui/design-system/button/Button";
 import { Logo } from "@/ui/design-system/logo/Logo";
 import { Typography } from "@/ui/design-system/typography/Typography";
-import Image from "next/image";
 
 export const SkillsView = () => {
   return (
@@ -32,13 +31,7 @@ export const SkillsView = () => {
           Lorem ipsum dolor
         </Button>
       </div>
-      <div className="relative w-[300px] h-[200px]">
-        <Image
-          fill
-          src={"/assets/images/emoji-g0bf5c5369_1920.png"}
-          alt="image"
-        />
-      </div>
+      <div className=""></div>
     </Container>
   );
 };

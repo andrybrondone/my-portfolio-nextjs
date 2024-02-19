@@ -4,15 +4,12 @@ import { useEffect, useRef } from "react";
 interface Props {
   value: number;
 }
-export default function NumberAnimation() {
-  return <>{/* <AnimationNumbers value={55} />+ */}</>;
-}
 
-const AnimationNumbers = ({ value }: Props) => {
+export const AnimationNumbersConatiner = ({ value }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, { duration: 3000 });
+  const springValue = useSpring(motionValue, { duration: 5000 });
   const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
@@ -28,4 +25,6 @@ const AnimationNumbers = ({ value }: Props) => {
       }
     });
   }, [springValue, value]);
+
+  return <span ref={ref}></span>;
 };

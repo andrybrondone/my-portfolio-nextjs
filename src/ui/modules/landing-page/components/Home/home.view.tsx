@@ -1,3 +1,4 @@
+import { LinkType } from "@/lib/link-type";
 import { Container } from "@/ui/components/container/Container";
 import { Button } from "@/ui/design-system/button/Button";
 import { Typography } from "@/ui/design-system/typography/Typography";
@@ -6,11 +7,11 @@ import { RiDownload2Line } from "react-icons/ri";
 
 export const AccueilView = () => {
   return (
-    <Container className="flex items-center justify-between pt-2 pb-10 overflow-hidden">
+    <Container className="flex items-center justify-between pt-2 overflow-hidden">
       <div className="w-[500px] h-[585px] rounded-se-[430px] rounded-es-full">
         <Image
           priority={true}
-          src="/assets/svg/me.svg"
+          src="/assets/images/me.jpg"
           alt="Ma photo"
           width={495}
           height={585}
@@ -41,8 +42,12 @@ export const AccueilView = () => {
           enim.
         </Typography>
         <div className="space-x-5 pt-2.5">
-          <Button baseUrl="/#" icon={{ icon: RiDownload2Line }}>
-            Résumé
+          <Button
+            baseUrl="/projet-marketing.pdf"
+            linkType={LinkType.EXTERNAL}
+            icon={{ icon: RiDownload2Line }}
+          >
+            Mon CV
           </Button>
           <Button baseUrl="/#" variant="secondary">
             En savoir plus

@@ -1,9 +1,10 @@
+import { LinkType } from "@/lib/link-type";
 import { Container } from "@/ui/components/container/Container";
 import { SocialNetworksButtons } from "@/ui/components/navigation/social-networks-buttons";
 import { Button } from "@/ui/design-system/button/Button";
 import { Typography } from "@/ui/design-system/typography/Typography";
 import Image from "next/image";
-import { RiDownload2Line } from "react-icons/ri";
+import { RiGithubFill } from "react-icons/ri";
 import { v4 as uuidv4 } from "uuid";
 
 interface ProjectListInterface {
@@ -89,25 +90,25 @@ export const ProjectView = () => {
         <div className="col-span-7 grid grid-cols-2 gap-7">{projectList}</div>
         <div className="flex flex-col justify-between col-span-5 gap-10">
           <div>
-            <Typography variant="h2" component="h2" className="mb-5">
-              Lorem ipsum dolor sit amet.
+            <Typography variant="h2" component="h2" className="mb-5 word-space">
+              Les Projet déja Réaliser
             </Typography>
             <Typography
               variant="body-lg"
               theme="gray"
               component="p"
-              className="mb-10"
+              className="mb-10 text-justify"
             >
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste,
-              veniam excepturi deleniti eum ex nihil.
+              Le code source de ce portfolio est aussi disponible sur mon GitHub
+              s'il vous intéresse .
             </Typography>
             <Button
               variant="secondary"
-              baseUrl="/#"
-              icon={{ icon: RiDownload2Line }}
-              iconPosition="right"
+              baseUrl="https://github.com/andrybrondone"
+              linkType={LinkType.EXTERNAL}
+              icon={{ icon: RiGithubFill }}
             >
-              Télécharger mon CV
+              Voir le code source
             </Button>
           </div>
           <div>

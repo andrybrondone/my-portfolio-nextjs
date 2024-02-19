@@ -1,128 +1,62 @@
 import { Container } from "@/ui/components/container/Container";
-import { SocialNetworksButtons } from "@/ui/components/navigation/social-networks-buttons";
-import { Button } from "@/ui/design-system/button/Button";
 import { Typography } from "@/ui/design-system/typography/Typography";
-import Image from "next/image";
-import { RiDownload2Line, RiPhoneLine, RiPhoneLockLine } from "react-icons/ri";
+import { motion } from "framer-motion";
 import { v4 as uuidv4 } from "uuid";
+import { AnimationNumbersConatiner } from "../animation-numbers-container/AnimationNumbersContainer";
 
-interface AboutListInterface {
-  imagePath: string;
-  imageAlt: string;
-  title: string;
+interface NumberDataListInterface {
+  value: number;
+  delay: number;
   description: string;
 }
 
-const aboutData: AboutListInterface[] = [
+const numberData: NumberDataListInterface[] = [
   {
-    imagePath: "/assets/images/achievement-5597527_640.png",
-    imageAlt: "illustration",
-    title: "[ 2023-2024 ] - L3",
-    description:
-      "Je suis actuelement en troisème année de licence professionnel à L'ENI Fianarantsoa",
+    value: 4,
+    delay: 0,
+    description: "Projet Réaliser",
   },
   {
-    imagePath: "/assets/images/gears-1059756_640.png",
-    imageAlt: "illustration",
-    title: "[ 2022-2023 ] - L2",
-    description:
-      "J'ai realisé un stage Chez l'ONG Nididae Antananarivo dans le cadre de la pratique",
+    value: 2,
+    delay: 0.4,
+    description: "Experiences",
   },
   {
-    imagePath: "/assets/images/tool-145375_640.png",
-    imageAlt: "illustration",
-    title: "[ 2021-2022 ] - L1",
-    description:
-      "Premier pas dans l'étude superieur et dans le monde de l'informatique à L'ENI",
-  },
-  {
-    imagePath: "/assets/images/write-33360_640.png",
-    imageAlt: "illustration",
-    title: "[ 2020-2021 ] - Terminal D",
-    description:
-      "Obtantion de mon baccalaureat serie D avec montien Bien ! avec montien Bien !",
+    value: 8,
+    delay: 0.2,
+    description: "Projet Realiser",
   },
 ];
 
 export const AboutView = () => {
-  const aboutLst = aboutData.map((about) => (
-    <div
-      key={uuidv4()}
-      className="flex flex-col items-center justify-center bg-white rounded p-7 shadow animate hover:scale-[1.025] hover:shadow-2xl"
-    >
-      <div className="relative w-[130px] h-[130px] rounded-full mb-10 overflow-hidden">
-        <Image
-          fill
-          src={about.imagePath}
-          alt={about.imageAlt}
-          className="object-scale-down blur-2xl"
-        />
-        <Image
-          fill
-          src={about.imagePath}
-          alt={about.imageAlt}
-          className="object-scale-down"
-        />
-      </div>
-      <Typography
-        variant="body-sm"
-        component="h3"
-        weight="medium"
-        className=" font-bold text-center mb-2.5 text-secondary border-b-2 border-dotted pb-1.5"
+  const numberLst = numberData.map((number) => (
+    <div key={uuidv4()}>
+      <motion.div
+        className="text-center py-9 relative -top-32 w-56 shadow-lg rounded"
+        initial={{ top: 0 }}
+        whileInView={{ top: -128 }}
+        transition={{ duration: 2, type: "spring", delay: number.delay }}
+        viewport={{ once: true }}
       >
-        {about.title}
-      </Typography>
-      <Typography
-        variant="caption2"
-        component="p"
-        theme="gray"
-        className="text-center mb-2.5"
-      >
-        {about.description}
-      </Typography>
+        <Typography variant="h1" component="h1">
+          <AnimationNumbersConatiner value={number.value} />+
+        </Typography>
+        <Typography variant="caption1" component="p" theme="gray">
+          {number.description}
+        </Typography>
+      </motion.div>
     </div>
   ));
 
   return (
-    <div className="bg-gray-300 mb-10 " id="a-propos">
-      <Container className="grid grid-cols-12 gap-24 py-24">
-        <div className="col-span-7 grid grid-cols-2 gap-7">{aboutLst}</div>
-        <div className="flex flex-col justify-between col-span-5 gap-10">
-          <div>
-            <Typography variant="h2" component="h2" className="mb-5">
-              Lorem ipsum dolor sit amet.
-            </Typography>
-            <Typography
-              variant="body-lg"
-              theme="gray"
-              component="p"
-              className="mb-10"
-            >
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste,
-              veniam excepturi deleniti eum ex nihil.
-            </Typography>
-            <Button
-              variant="secondary"
-              baseUrl="/#"
-              icon={{ icon: RiPhoneLine }}
-              iconPosition="left"
-            >
-              Me contacter
-            </Button>
+    <div id="a-propos" className=" pt-24">
+      <div className="bg-gray-300 py-10 ">
+        <Container>
+          <div className="flex items-center justify-center gap-5">
+            {numberLst}
           </div>
-          <div>
-            <Typography
-              variant="caption3"
-              theme="gray"
-              component="div"
-              className="mb-4"
-            >
-              Mes réseaux sociaux
-            </Typography>
-            <SocialNetworksButtons />
-          </div>
-        </div>
-      </Container>
+        </Container>
+      </div>
     </div>
   );
 };

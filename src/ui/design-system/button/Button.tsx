@@ -147,7 +147,7 @@ export const Button = ({
         icoSize,
         isLoading || disabled
           ? "cursor-not-allowed"
-          : "hover:translate-x-0.5 shadow-md hover:shadow-xl",
+          : "hover:translate-x-0.5 shadow hover:shadow-md",
         fullWith && "w-full",
         "relative animate"
       )}
