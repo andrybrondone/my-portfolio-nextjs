@@ -1,7 +1,9 @@
 import { LinkType } from "@/lib/link-type";
 import { IconProps } from "@/types/iconProps";
+import { DarkModeContext } from "@/ui/components/darkMode/DarkModeGlobal";
 import clsx from "clsx";
 import Link from "next/link";
+import { useContext } from "react";
 import { Spinner } from "../spinner/Spinner";
 
 interface Props {
@@ -37,18 +39,20 @@ export const Button = ({
   fullWith = false,
   action = () => {},
 }: Props) => {
+  const { isDarkMode } = useContext(DarkModeContext);
   let variantStyle: string = "",
     sizeStyle: string = "",
     icoSize: number = 0;
 
   switch (variant) {
     case "accent": // default
-      variantStyle = "bg-primary hover:bg-primary-400 text-white rounded";
+      variantStyle =
+        "bg-primary text-white hover:bg-primary-400 rounded dark:bg-dark-primary dark:hover:shadow-3xl";
       break;
 
     case "secondary":
       variantStyle =
-        "bg-primary-200 hover:bg-primary-300/50 text-primary rounded";
+        "bg-primary-200 hover:bg-primary-300/20 text-primary rounded shadow-lg dark:bg-gray-800 dark:text-white dark:hover:shadow-4xl";
       break;
 
     case "outline":
@@ -58,13 +62,13 @@ export const Button = ({
 
     case "disabled":
       variantStyle =
-        "bg-gray-400 border border-gray-500 text-gray-600 rounded cursor-not-allowed";
+        "bg-gray-400 border border-gray-500 text-gray-600 rounded cursor-not-allowed dark:bg-gray-700 dark:border-gray-600/20 dark:text-white/50";
       break;
 
     case "ico":
       if (iconTheme === "accent") {
         variantStyle =
-          "bg-primary hover:bg-primary-400 text-white rounded-full";
+          "bg-primary hover:bg-primary-400 text-white rounded-full dark:bg-dark-primary";
       }
       if (iconTheme === "secondary") {
         variantStyle =
@@ -141,13 +145,12 @@ export const Button = ({
     <button
       type={type}
       className={clsx(
+        isDarkMode && "dark",
         className,
         variantStyle,
         sizeStyle,
         icoSize,
-        isLoading || disabled
-          ? "cursor-not-allowed"
-          : "hover:translate-x-0.5 shadow hover:shadow-md",
+        isLoading || (disabled && "cursor-not-allowed"),
         fullWith && "w-full",
         "relative animate"
       )}

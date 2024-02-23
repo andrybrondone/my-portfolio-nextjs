@@ -5,21 +5,47 @@ import {
   RiLinkedinFill,
 } from "react-icons/ri";
 
+const homeScroll = (e: any) => {
+  e.preventDefault();
+  window.scrollTo(0, 0);
+};
+
+const projectScroll = (e: any) => {
+  e.preventDefault();
+
+  const project = document.getElementById("project");
+  project?.scrollIntoView({
+    behavior: "smooth",
+  });
+};
+
+const aboutScroll = (e: any) => {
+  e.preventDefault();
+
+  const about = document.getElementById("about");
+  about?.scrollIntoView({
+    behavior: "smooth",
+  });
+};
+
 const footerApplicationLinks: AppLinks[] = [
   {
-    label: "Accueil",
+    label: "Home",
     baseUrl: "/",
     type: "internal",
+    action: homeScroll,
   },
   {
-    label: "A props",
+    label: "About me",
     baseUrl: "/a-propos",
     type: "internal",
+    action: aboutScroll,
   },
   {
-    label: "Projet",
+    label: "My project",
     baseUrl: "/projet",
     type: "internal",
+    action: projectScroll,
   },
 ];
 /*const footerUsersLinks: AppLinks[] = [
@@ -84,7 +110,7 @@ export const footerSocialNetworksLink: AppLinks[] = [
 
 export const footerLinks = [
   {
-    label: "App",
+    label: "Application",
     links: footerApplicationLinks,
   },
   /* {
@@ -96,7 +122,7 @@ export const footerLinks = [
     links: fooInformationLink,
   },*/
   {
-    label: "Réseaux",
+    label: "Social Media",
     links: footerSocialNetworksLink,
   },
 ];

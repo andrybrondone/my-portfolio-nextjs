@@ -1,8 +1,13 @@
+import { DarkModeContext } from "@/ui/components/darkMode/DarkModeGlobal";
+import { useContext } from "react";
+
 interface Props {
   size?: "very-small" | "small" | "medium" | "large";
 }
 
 export const Logo = ({ size = "medium" }: Props) => {
+  const { isDarkMode } = useContext(DarkModeContext);
+
   let sizeLogo: number;
 
   switch (size) {
@@ -10,7 +15,7 @@ export const Logo = ({ size = "medium" }: Props) => {
       sizeLogo = 34;
       break;
     case "small":
-      sizeLogo = 61;
+      sizeLogo = 55;
       break;
     case "medium": //default
       sizeLogo = 88;
@@ -71,32 +76,62 @@ export const Logo = ({ size = "medium" }: Props) => {
               transform="matrix(1, 0, 0, 1, 149, 154.5)"
               filter="url(#Ellipse_1)"
             >
-              <g
-                id="Ellipse_1-2"
-                data-name="Ellipse 1"
-                transform="translate(3 2.5)"
-                fill="transparent"
-                stroke="#f30840"
-                strokeWidth="2.5"
-                strokeDasharray="4"
-              >
-                <circle cx="26.5" cy="26.5" r="26.5" stroke="none" />
-                <circle cx="26.5" cy="26.5" r="25.25" fill="none" />
-              </g>
+              {isDarkMode ? (
+                <g
+                  id="Ellipse_1-2"
+                  data-name="Ellipse 1"
+                  transform="translate(3 2.5)"
+                  fill="transparent"
+                  stroke="#FF00A1"
+                  strokeWidth="2.5"
+                  strokeDasharray="4"
+                >
+                  <circle cx="26.5" cy="26.5" r="26.5" stroke="none" />
+                  <circle cx="26.5" cy="26.5" r="25.25" fill="none" />
+                </g>
+              ) : (
+                <g
+                  id="Ellipse_1-2"
+                  data-name="Ellipse 1"
+                  transform="translate(3 2.5)"
+                  fill="transparent"
+                  stroke="#FF1059"
+                  strokeWidth="2.5"
+                  strokeDasharray="4"
+                >
+                  <circle cx="26.5" cy="26.5" r="26.5" stroke="none" />
+                  <circle cx="26.5" cy="26.5" r="25.25" fill="none" />
+                </g>
+              )}
             </g>
             <g transform="matrix(1, 0, 0, 1, 149, 154.5)" filter="url(#B)">
-              <text
-                id="B-2"
-                data-name="B"
-                transform="translate(12 5.5)"
-                fill="#f30840"
-                fontSize="45"
-                fontFamily="MonotypeCorsiva, Monotype Corsiva"
-              >
-                <tspan x="0" y="36">
-                  B
-                </tspan>
-              </text>
+              {isDarkMode ? (
+                <text
+                  id="B-2"
+                  data-name="B"
+                  transform="translate(12 5.5)"
+                  fill="#FF00A1"
+                  fontSize="45"
+                  fontFamily="MonotypeCorsiva, Monotype Corsiva"
+                >
+                  <tspan x="0" y="36">
+                    B
+                  </tspan>
+                </text>
+              ) : (
+                <text
+                  id="B-2"
+                  data-name="B"
+                  transform="translate(12 5.5)"
+                  fill="#FF1059"
+                  fontSize="45"
+                  fontFamily="MonotypeCorsiva, Monotype Corsiva"
+                >
+                  <tspan x="0" y="36">
+                    B
+                  </tspan>
+                </text>
+              )}
             </g>
           </g>
         </g>

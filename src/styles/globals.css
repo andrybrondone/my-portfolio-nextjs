@@ -9,6 +9,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  @apply transition-colors duration-200 ease-in-out
 }
 
 html,
@@ -16,18 +17,18 @@ body {
   scroll-behavior: smooth;
 }
 
-a:hover {
-  @apply text-secondary;
-}
-
 .animate,
 a,
 a:hover {
-  -webkit-transition: all 0.2s ease;
-  -moz-transition: all 0.2s ease;
-  -o-transition: all 0.2s ease;
-  -ms-transition: all 0.2s ease;
-  transition: all 0.2s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.active {
+  color: blueviolet;
 }
 
 .word-space {
@@ -36,9 +37,9 @@ a:hover {
 
 /* Styles personnalisés pour la scrollbar */
 ::-webkit-scrollbar {
-  height: 12px;
+  height: 5px;
   width: 5px;
-  @apply bg-white
+  @apply dark:bg-gray
 }
 
 ::-webkit-scrollbar-track {
@@ -49,7 +50,7 @@ a:hover {
 ::-webkit-scrollbar-thumb {
   @apply bg-secondary;
   border-radius: 20px;
-  -webkit-border-radius: 1ex;
+  -webkit-border-radius: 8ex;
   /* Couleur du curseur */
 }
 
@@ -58,9 +59,74 @@ a:hover {
   /* Couleur du curseur au survol */
 }
 
+.toogle-animated {
+  animation: spin 0.8s ease;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  font-size: 18px;
+}
 
-::-webkit-scrollbar-corner {
-  @apply bg-secondary-600;
+ul {
+  display: flex;
+  width: 100%;
+}
+
+li {
+  border-radius: 5px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  width: 100%;
+  padding: 10px 15px;
+  position: relative;
+  background: white;
+  cursor: pointer;
+  height: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  user-select: none;
+}
+
+.underline {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--accent);
+}
+
+li.selected {
+  background: #eee;
+}
+
+li button {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  background: #fff;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  stroke: #000;
+  margin-left: 10px;
+  cursor: pointer;
+  flex-shrink: 0;
 }

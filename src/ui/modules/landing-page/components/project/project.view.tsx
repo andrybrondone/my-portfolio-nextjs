@@ -1,9 +1,13 @@
 import { LinkType } from "@/lib/link-type";
 import { Container } from "@/ui/components/container/Container";
+import { DarkModeContext } from "@/ui/components/darkMode/DarkModeGlobal";
 import { SocialNetworksButtons } from "@/ui/components/navigation/social-networks-buttons";
 import { Button } from "@/ui/design-system/button/Button";
+import { TexteSection } from "@/ui/design-system/text-section/TexteSection";
 import { Typography } from "@/ui/design-system/typography/Typography";
+import clsx from "clsx";
 import Image from "next/image";
+import { useContext } from "react";
 import { RiGithubFill } from "react-icons/ri";
 import { v4 as uuidv4 } from "uuid";
 
@@ -46,10 +50,12 @@ const projectData: ProjectListInterface[] = [
 ];
 
 export const ProjectView = () => {
+  const { isDarkMode } = useContext(DarkModeContext);
+
   const projectList = projectData.map((about) => (
     <div
       key={uuidv4()}
-      className="flex flex-col items-center justify-center bg-white rounded p-7 shadow animate hover:scale-[1.025] hover:shadow-2xl"
+      className="flex flex-col items-center justify-center bg-white rounded p-7 shadow animate hover:scale-[1.025] hover:shadow-2xl dark:bg-gray-800 dark:hover:shadow dark:hover:shadow-dark-secondary"
     >
       <div className="relative w-[130px] h-[130px] rounded-full mb-10 overflow-hidden">
         <Image
@@ -77,7 +83,7 @@ export const ProjectView = () => {
         variant="caption2"
         component="p"
         theme="gray"
-        className="text-center mb-2.5"
+        className="text-center mb-2.5 dark:text-primary-300"
       >
         {about.description}
       </Typography>
@@ -85,19 +91,30 @@ export const ProjectView = () => {
   ));
 
   return (
-    <div className="bg-gray-300 mb-10 ">
-      <Container className="grid grid-cols-12 gap-24 py-24">
+    <div
+      className={clsx(
+        "bg-gray-300 mb-10 pt-10 dark:bg-dark-gray",
+        isDarkMode && "dark"
+      )}
+      id="project"
+    >
+      <TexteSection title="My Recent Project" />
+      <Container className="grid grid-cols-12 gap-24 pt-8 pb-24">
         <div className="col-span-7 grid grid-cols-2 gap-7">{projectList}</div>
         <div className="flex flex-col justify-between col-span-5 gap-10">
           <div>
-            <Typography variant="h2" component="h2" className="mb-5 word-space">
-              Les Projet déja Réaliser
+            <Typography
+              variant="h2"
+              component="h2"
+              className="mb-5 word-space dark:text-dark-primary"
+            >
+              The projects already completed
             </Typography>
             <Typography
               variant="body-lg"
               theme="gray"
               component="p"
-              className="mb-10 text-justify"
+              className="mb-10 text-justify dark:text-primary-300"
             >
               Le code source de ce portfolio est aussi disponible sur mon GitHub
               s'il vous intéresse .
@@ -116,9 +133,9 @@ export const ProjectView = () => {
               variant="caption3"
               theme="gray"
               component="div"
-              className="mb-4"
+              className="mb-4 dark:text-primary-300"
             >
-              Mes réseaux sociaux
+              My social networks
             </Typography>
             <SocialNetworksButtons />
           </div>

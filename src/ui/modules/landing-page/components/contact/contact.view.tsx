@@ -4,10 +4,12 @@ import { Box } from "@/ui/design-system/box/box";
 import { Typography } from "@/ui/design-system/typography/Typography";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 import { RiAtLine, RiMessengerLine, RiWhatsappLine } from "react-icons/ri";
 import { v4 as uuidv4 } from "uuid";
 import { ContactForm } from "./contact.form";
+import { DarkModeContext } from "@/ui/components/darkMode/DarkModeGlobal";
+import clsx from "clsx";
 
 interface Props {
   form: FormsType;
@@ -38,14 +40,23 @@ const contactData: ContactProps[] = [
 ];
 
 export const ContactView = ({ form }: Props) => {
+  const { isDarkMode } = useContext(DarkModeContext);
+
   const contactLst = contactData.map((contact) => (
     <Link key={uuidv4()} href={contact.link}>
       <Box
-        className="flex flex-col items-center gap-1 bg-white border  rounded my-2 shadow animate hover:-translate-y-0.5"
+        className="flex flex-col items-center gap-1 bg-white border dark:bg-gray-800 rounded my-2 shadow dark:shadow-gray-800 animate hover:-translate-y-0.5"
         padding_y="py-2"
       >
-        <div className=" text-4xl text-secondary">{contact.icon}</div>
-        <Typography variant="body-sm" component="h3" weight="medium">
+        <div className=" text-4xl text-secondary dark:text-dark-secondary">
+          {contact.icon}
+        </div>
+        <Typography
+          variant="body-sm"
+          component="h3"
+          weight="medium"
+          className="dark:text-white"
+        >
           {contact.description}
         </Typography>
       </Box>
@@ -53,7 +64,10 @@ export const ContactView = ({ form }: Props) => {
   ));
 
   return (
-    <Container className="grid grid-cols-2 gap-10 py-20" id="contact">
+    <Container
+      className={clsx("grid grid-cols-2 gap-10 py-20", isDarkMode && "dark")}
+      id="contact"
+    >
       <div className="flex items-center">
         <div className="relative w-96 h-[531px] flex flex-col justify-end left-24">
           <Image
@@ -68,8 +82,12 @@ export const ContactView = ({ form }: Props) => {
       </div>
       <div className="flex items-center relative right-24">
         <Box>
-          <Typography variant="h5" component="h1" className=" text-center">
-            Pour me contacter
+          <Typography
+            variant="h5"
+            component="h1"
+            className=" text-center dark:text-white"
+          >
+            To contact me
           </Typography>
 
           <ContactForm form={form} />

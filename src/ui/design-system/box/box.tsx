@@ -1,4 +1,6 @@
+import { DarkModeContext } from "@/ui/components/darkMode/DarkModeGlobal";
 import clsx from "clsx";
+import { useContext } from "react";
 
 interface Props {
   children: React.ReactNode;
@@ -13,10 +15,13 @@ export const Box = ({
   padding_x = "px-9",
   padding_y = "py-9",
 }: Props) => {
+  const { isDarkMode } = useContext(DarkModeContext);
+
   return (
     <div
       className={clsx(
-        "w-full border border-gray-400 shadow rounded",
+        isDarkMode && "dark",
+        "w-full border border-gray-400 shadow rounded dark:border-gray-800  dark:shadow dark:shadow-gray-800",
         padding_x,
         padding_y,
         className

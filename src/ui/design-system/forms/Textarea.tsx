@@ -1,5 +1,7 @@
 import clsx from "clsx";
 import { Typography } from "../typography/Typography";
+import { DarkModeContext } from "@/ui/components/darkMode/DarkModeGlobal";
+import { useContext } from "react";
 
 interface Props {
   isLoading: boolean;
@@ -22,8 +24,10 @@ export const Textarea = ({
   required = true,
   isAutocompleted = false,
 }: Props) => {
+  const { isDarkMode } = useContext(DarkModeContext);
+
   return (
-    <div className="space-y-2">
+    <div className={clsx("space-y-2", isDarkMode && "dark")}>
       <textarea
         rows="4"
         placeholder={placeholder}
@@ -31,8 +35,8 @@ export const Textarea = ({
           isLoading && "cursor-not-allowed",
           errors[id]
             ? "placeholder-alert-danger text-alert-danger border-alert-danger"
-            : " placeholder-gray-700 border-gray-400",
-          "w-full p-4 font-light border rounded focus:outline-none focus:ring-1 focus:ring-secondary"
+            : " placeholder-gray-700 border-gray-400 dark:placeholder-primary-300 dark:border-gray-800",
+          "w-full p-4 font-light border rounded focus:outline-none focus:ring-1 focus:ring-secondary dark:text-primary-200 dark:focus:ring-dark-secondary dark:bg-gray-800"
         )}
         disabled={isLoading}
         {...register(id, {

@@ -2,14 +2,19 @@ import { LinkType } from "@/lib/link-type";
 import { FooterLinks } from "@/types/app-links";
 import { Logo } from "@/ui/design-system/logo/Logo";
 import { Typography } from "@/ui/design-system/typography/Typography";
+import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Container } from "../container/Container";
+import { DarkModeContext } from "../darkMode/DarkModeGlobal";
 import { footerLinks } from "./app-links";
 import { SocialNetworksButtons } from "./social-networks-buttons";
 
 export const Footer = () => {
+  const { isDarkMode } = useContext(DarkModeContext);
+
   const currentYear = new Date().getFullYear();
 
   const footerNavigationList = footerLinks.map((colomnLinks) => (
@@ -17,7 +22,7 @@ export const Footer = () => {
   ));
 
   return (
-    <div className="bg-gray">
+    <div className={clsx("bg-gray dark:bg-black", isDarkMode && "dark")}>
       <Container className="flex items-center justify-between pt-16 gap-7">
         <div className="flex flex-col items-center gap-1">
           <Typography variant="lead" theme="white" weight="medium">
@@ -41,8 +46,17 @@ export const Footer = () => {
         <hr className="text-gray-800" />
         <div className="flex items-center justify-between">
           <Typography variant="caption3" theme="gray">
-            Copyright &copy; {`${currentYear} `} | Réaliser par{" "}
-            <Link href="/">Brondone</Link>
+            Copyright &copy; {`${currentYear} `} | Realized by{" "}
+            <Link
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo(0, 0);
+              }}
+              className="hover:text-secondary dark:hover:text-dark-secondary"
+            >
+              Brondone
+            </Link>
           </Typography>
           <div>
             <SocialNetworksButtons theme="gray" />
@@ -58,13 +72,25 @@ interface footerLinkProps {
 }
 
 const FooterLink = ({ data }: footerLinkProps) => {
+  const { isDarkMode } = useContext(DarkModeContext);
+
   const linkList = data.links.map((link) => (
     <div key={uuidv4()}>
       {link.type === LinkType.INTERNAL && (
-        <Link href={link.baseUrl}>{link.label}</Link>
+        <Link
+          href={link.baseUrl}
+          onClick={link.action}
+          className="hover:text-secondary dark:hover:text-dark-secondary"
+        >
+          {link.label}
+        </Link>
       )}
       {link.type === LinkType.EXTERNAL && (
-        <a href={link.baseUrl} target="_blank">
+        <a
+          href={link.baseUrl}
+          target="_blank"
+          className="hover:text-secondary dark:hover:text-dark-secondary"
+        >
           {link.label}
         </a>
       )}
@@ -72,7 +98,7 @@ const FooterLink = ({ data }: footerLinkProps) => {
   ));
 
   return (
-    <div className="min-w-[190px]">
+    <div className={clsx("min-w-[190px]", isDarkMode && "dark")}>
       <Typography theme="white" variant="lead" weight="medium" className="pb-5">
         {data.label}
       </Typography>

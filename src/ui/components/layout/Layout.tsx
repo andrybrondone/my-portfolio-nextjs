@@ -1,3 +1,6 @@
+import clsx from "clsx";
+import { useContext } from "react";
+import { DarkModeContext } from "../darkMode/DarkModeGlobal";
 import { Footer } from "../navigation/Footer";
 import { Navigation } from "../navigation/Navigation";
 
@@ -6,11 +9,15 @@ interface Props {
 }
 
 export const Layout = ({ children }: Props) => {
+  const { isDarkMode } = useContext(DarkModeContext);
+
   return (
-    <>
-      <Navigation />
-      {children}
-      <Footer />
-    </>
+    <div className={clsx(isDarkMode && "dark")}>
+      <div className="dark:bg-gray">
+        <Navigation />
+        {children}
+        <Footer />
+      </div>
+    </div>
   );
 };

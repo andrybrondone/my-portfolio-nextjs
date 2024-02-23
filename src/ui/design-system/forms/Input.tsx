@@ -4,7 +4,7 @@ import { Typography } from "../typography/Typography";
 interface Props {
   isLoading: boolean;
   placeholder: string;
-  type?: "text" | "textarea" | "email";
+  type?: "text" | "email";
   register: any;
   errors: any;
   errorMsg?: string;
@@ -33,8 +33,8 @@ export const Input = ({
           isLoading && "cursor-not-allowed",
           errors[id]
             ? "placeholder-alert-danger text-alert-danger border-alert-danger"
-            : "placeholder-gray-700 border-gray-400",
-          "w-full p-4 font-light border rounded focus:outline-none focus:ring-1 focus:ring-secondary"
+            : "placeholder-gray-700 border-gray-400 dark:placeholder-primary-300 dark:border-gray-800",
+          "w-full p-4 font-light border rounded focus:outline-none focus:ring-1 focus:ring-secondary dark:text-primary-200 dark:focus:ring-dark-secondary dark:bg-gray-800"
         )}
         disabled={isLoading}
         {...register(id, {

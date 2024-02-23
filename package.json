@@ -10,13 +10,14 @@
   },
   "dependencies": {
     "clsx": "^2.1.0",
-    "firebase": "^10.7.1",
+    "firebase": "^10.6.0",
     "framer-motion": "^11.0.3",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.50.0",
     "react-icons": "^5.0.1",
+    "react-perfect-scrollbar": "^1.5.8",
     "react-toastify": "^10.0.4",
     "sonner": "^1.4.0",
     "uuidv4": "^6.2.13"

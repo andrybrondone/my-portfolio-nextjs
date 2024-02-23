@@ -5,12 +5,13 @@ const config: Config = {
   theme: {
     colors: {
       white: "#ffffff",
+      black: "#100F0F",
       primary: {
         200: "#efeffc",
         300: "#cfd0f6",
-        400: "#f30835",
-        DEFAULT: "#f30850",
-        600: "#f30820",
+        400: "#FF3170",
+        DEFAULT: "#FF1069",
+        600: "#E91455",
       },
       secondary: {
         200: "#eaf8f4",
@@ -28,16 +29,16 @@ const config: Config = {
         800: "#333333",
         DEFAULT: "#1d1d1d",
       },
+      dark: {
+        primary: "#FF1CAC",
+        secondary: "#45ADFF",
+        gray: "#212020",
+      },
       alert: {
         danger: "#FF4E4E",
         success: "#90DA1A",
         warning: "#FEB72F",
       },
-    },
-
-    backgroundImage: {
-      circularLight:
-        "repeating-radial-gradient(rgba(0,0,0,0.4) 1px, white 5px, white 100px)",
     },
 
     fontSize: {
@@ -77,7 +78,7 @@ const config: Config = {
         "30px",
         {
           lineHeight: "44px",
-          letterSpacing: "-1.2000000476837158px",
+          letterSpacing: "-0.5px",
           fontWeight: "500",
         },
       ],
@@ -163,13 +164,25 @@ const config: Config = {
       ],
     },
 
+    // boxShadow: {
+    //   DEFAULT: "10px 10px 2px",
+    //   primary: "0 0 25px",
+    //   dark: "0 0 30px #333333",
+    // },
+
     borderRadius: {
       DEFAULT: "10px",
       full: "50%",
     },
 
-    extend: {},
+    extend: {
+      boxShadow: {
+        "3xl": "0 0 25px #FF1CAC",
+        "4xl": "0 0 30px #333333",
+      },
+    },
   },
   plugins: [],
+  darkMode: "class",
 };
 export default config;
