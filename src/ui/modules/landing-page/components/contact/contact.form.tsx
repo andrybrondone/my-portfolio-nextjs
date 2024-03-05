@@ -19,7 +19,7 @@ export const ContactForm = ({ form }: Props) => {
       onSubmit={handleSubmit(onSubmit)}
       className={clsx("pt-8 pb-5 space-y-4", isDarkMode && "dark")}
     >
-      <div className="flex justify-between">
+      <div className="flex justify-center gap-2">
         <Input
           isLoading={isLoading}
           placeholder="Full Name *"
@@ -54,15 +54,16 @@ export const ContactForm = ({ form }: Props) => {
         errorMsg="Champ obligatoire"
         id="subject"
       />
-      <Button
-        isLoading={isLoading}
-        type="submit"
-        variant="disabled"
-        fullWith
-        disabled
-      >
-        Send
-      </Button>
+      <div className="flex justify-center items-center ">
+        <Button
+          isLoading={isLoading}
+          type="submit"
+          disabled
+          className="dark:bg-secondary rounded-[200px] w-32 dark:hover:shadow-5xl"
+        >
+          Send
+        </Button>
+      </div>
     </form>
   );
 };

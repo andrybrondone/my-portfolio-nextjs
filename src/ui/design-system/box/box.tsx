@@ -21,7 +21,7 @@ export const Box = ({
     <div
       className={clsx(
         isDarkMode && "dark",
-        "w-full border border-gray-400 shadow rounded dark:border-gray-800  dark:shadow dark:shadow-gray-800",
+        "border border-gray-400 shadow rounded dark:border-gray-800  dark:shadow dark:shadow-gray-800",
         padding_x,
         padding_y,
         className

@@ -1,78 +1,59 @@
 import { Button } from "@/ui/design-system/button/Button";
 import { Logo } from "@/ui/design-system/logo/Logo";
 import { Typography } from "@/ui/design-system/typography/Typography";
+import { scrollToElement } from "@/utils/scrollToElement";
 import clsx from "clsx";
 import Link from "next/link";
-import { useContext } from "react";
-import { RiHome3Line } from "react-icons/ri";
+import { useContext, useState } from "react";
+import { AiOutlineHome } from "react-icons/ai";
 import { Container } from "../container/Container";
 import { DarkModeContext } from "../darkMode/DarkModeGlobal";
 import { ToggleBtn } from "../darkMode/ToggleBtn";
 import { ActiveLink } from "./active-link";
 
-interface Props {}
+interface NavigationProps {}
 
-export const Navigation = ({}: Props) => {
+export const Navigation: React.FC<NavigationProps> = () => {
   const { isDarkMode } = useContext(DarkModeContext);
 
-  const contactScroll = () => {
-    const contact = document.getElementById("contact");
-    contact?.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
-  const projectScroll = () => {
-    const project = document.getElementById("project");
-    project?.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
-  const aboutScroll = () => {
-    const about = document.getElementById("about");
-    about?.scrollIntoView({
-      behavior: "smooth",
-    });
-  };
-
   return (
-    <div className={clsx("py-3", isDarkMode && "dark")}>
-      <Container className="flex items-center justify-between gap-7 border-2 border-gray-500  rounded-[200px] pr-1 pl-0.5 lg:pl-0.5 lg:pr-1 dark:border-gray-800">
+    <div className={clsx("py-1", isDarkMode && "dark")}>
+      <Container className="flex items-center justify-between gap-7 fixed z-50 blur-nav border-2 border-gray-500 bg-white/60 dark:bg-gray/40  rounded-[200px] pr-1 pl-0.5 lg:pl-0.5 lg:pr-1 dark:border-gray-800">
         <Link href="/">
-          <div className=" flex items-center gap-2.5">
+          <div className="flex items-center gap-2.5">
             <Logo size="small" />
             <div>
               <Typography
                 variant="h4"
                 component="h2"
-                className=" text-gray font-bold dark:text-white"
+                className="text-gray font-bold dark:text-white"
               >
-                Welcom to my Portfolio
+                Welcome to my Portfolio
               </Typography>
             </div>
           </div>
         </Link>
-        <div className="absolute left-[50%] -translate-x-[25.8%]">
+        <div className="absolute left-1/2 -translate-x-[26%]">
           <Typography
             variant="body-base"
             component="div"
             className="flex items-center gap-10 dark:text-white"
           >
-            <ActiveLink href="/" className="flex justify-center items-center">
-              <RiHome3Line className="relative bottom-[1px] right-1" />
+            <ActiveLink
+              href="/"
+              className="test flex justify-center items-center"
+            >
+              <AiOutlineHome className="relative bottom-0.5 right-1" />
               Home
             </ActiveLink>
-            <ActiveLink href="/about" onClick={aboutScroll}>
-              About me
-            </ActiveLink>
-            <ActiveLink href="/project" onClick={projectScroll}>
-              Project
-            </ActiveLink>
+            <ActiveLink href="/#about">About me</ActiveLink>
+            <ActiveLink href="/#project">Project</ActiveLink>
           </Typography>
         </div>
         <div className="flex items-center justify-center gap-5">
           <ToggleBtn />
           <Button
-            action={contactScroll}
+            action={() => scrollToElement("#contact".split("#")[1])}
             className="rounded-[200px] text-caption1"
           >
             Contact

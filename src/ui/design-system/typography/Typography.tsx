@@ -1,4 +1,6 @@
+import { DarkModeContext } from "@/ui/components/darkMode/DarkModeGlobal";
 import clsx from "clsx";
+import { useContext } from "react";
 
 interface Props {
   variant?:
@@ -39,6 +41,8 @@ export const Typography = ({
   className,
   children,
 }: Props) => {
+  const { isDarkMode } = useContext(DarkModeContext);
+
   let variantStyles: string = "",
     colorStyles: string = "";
 
@@ -97,10 +101,10 @@ export const Typography = ({
       colorStyles = "text-white";
       break;
     case "primary":
-      colorStyles = "text-primary";
+      colorStyles = "text-primary dark:text-dark-primary";
       break;
     case "secondary":
-      colorStyles = "text-secondary";
+      colorStyles = "text-secondary dark:text-dark-secondary";
       break;
     case "danger":
       colorStyles = "text-alert-danger";
@@ -119,7 +123,8 @@ export const Typography = ({
         variantStyles,
         colorStyles,
         weight == "medium" && "font-medium",
-        className
+        className,
+        isDarkMode && "dark"
       )}
     >
       {children}

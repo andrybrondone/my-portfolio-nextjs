@@ -65,11 +65,14 @@ export const ContactView = ({ form }: Props) => {
 
   return (
     <Container
-      className={clsx("grid grid-cols-2 gap-10 py-20", isDarkMode && "dark")}
+      className={clsx(
+        "flex justify-center items-center gap-8 py-20",
+        isDarkMode && "dark"
+      )}
       id="contact"
     >
       <div className="flex items-center">
-        <div className="relative w-96 h-[531px] flex flex-col justify-end left-24">
+        <div className="relative w-96 h-[531px] flex flex-col justify-end">
           <Image
             src="/assets/images/phone.png"
             alt="contact"
@@ -80,7 +83,7 @@ export const ContactView = ({ form }: Props) => {
           {contactLst}
         </div>
       </div>
-      <div className="flex items-center relative right-24">
+      <div className="flex items-center">
         <Box>
           <Typography
             variant="h5"

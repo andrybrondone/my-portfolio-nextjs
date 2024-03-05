@@ -1,14 +1,13 @@
 import { Container } from "@/ui/components/container/Container";
+import { DarkModeContext } from "@/ui/components/darkMode/DarkModeGlobal";
 import { TexteSection } from "@/ui/design-system/text-section/TexteSection";
 import { Typography } from "@/ui/design-system/typography/Typography";
+import clsx from "clsx";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { AnimationNumbersConatiner } from "../animation-numbers-container/AnimationNumbersContainer";
-import { OngletAbout } from "./ongletAbout";
-import { DarkModeContext } from "@/ui/components/darkMode/DarkModeGlobal";
-import { useContext } from "react";
-import clsx from "clsx";
+import { ImageSlider } from "./ImageSlider";
 
 interface NumberDataListInterface {
   value: number;
@@ -70,7 +69,7 @@ export const AboutView = () => {
           </div>
           <div className="relative -top-20">
             <TexteSection title="About me" />
-            <div className="flex justify-evenly items-center my-8">
+            {/* <div className="flex justify-evenly items-center my-8">
               <OngletAbout />
               <div className="relative h-96 w-96 rounded-full">
                 <Image
@@ -81,7 +80,8 @@ export const AboutView = () => {
                   className=" rounded-full object-cover object-left"
                 />
               </div>
-            </div>
+            </div> */}
+            <ImageSlider />
           </div>
         </Container>
       </div>

@@ -164,12 +164,6 @@ const config: Config = {
       ],
     },
 
-    // boxShadow: {
-    //   DEFAULT: "10px 10px 2px",
-    //   primary: "0 0 25px",
-    //   dark: "0 0 30px #333333",
-    // },
-
     borderRadius: {
       DEFAULT: "10px",
       full: "50%",
@@ -177,8 +171,9 @@ const config: Config = {
 
     extend: {
       boxShadow: {
-        "3xl": "0 0 25px #FF1CAC",
+        "3xl": "0 0 30px #FF1CAC",
         "4xl": "0 0 30px #333333",
+        "5xl": "0 0 25px #45ADFF",
       },
     },
   },
