@@ -19,7 +19,7 @@ export const ContactForm = ({ form }: Props) => {
       onSubmit={handleSubmit(onSubmit)}
       className={clsx("pt-8 pb-5 space-y-4", isDarkMode && "dark")}
     >
-      <div className="flex justify-center gap-2">
+      <div className="flex justify-center gap-2 ">
         <Input
           isLoading={isLoading}
           placeholder="Full Name *"

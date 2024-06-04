@@ -1,6 +1,4 @@
-import { DarkModeContext } from "@/ui/components/darkMode/DarkModeGlobal";
 import clsx from "clsx";
-import { useContext } from "react";
 
 interface Props {
   variant?:
@@ -28,7 +26,7 @@ interface Props {
     | "danger"
     | "success"
     | "warning";
-  weight?: "regular" | "medium";
+  weight?: "regular" | "medium" | "bold";
   className?: string;
   children: React.ReactNode;
 }
@@ -37,54 +35,60 @@ export const Typography = ({
   variant = "h3",
   component: Component = "div",
   theme = "black",
-  weight = "regular",
+  weight = "medium",
   className,
   children,
 }: Props) => {
-  const { isDarkMode } = useContext(DarkModeContext);
-
   let variantStyles: string = "",
-    colorStyles: string = "";
+    colorStyles: string = "",
+    font: string = "";
 
   switch (variant) {
     case "display":
-      variantStyles = "text-8xl";
+      variantStyles =
+        "text-8xl max-lg:text-7xl max-md:text-6xl max-sm:text-5xl";
       break;
     case "h1":
-      variantStyles = "text-7xl";
+      variantStyles =
+        "text-7xl max-lg:text-6xl max-md:text-5xl max-sm:text-4xl";
       break;
     case "h2":
-      variantStyles = "text-6xl";
+      variantStyles =
+        "text-6xl max-lg:text-5xl max-md:text-4xl max-sm:text-3xl";
       break;
     case "h3": //Default
-      variantStyles = "text-5xl";
+      variantStyles =
+        "text-5xl max-lg:text-4xl max-md:text-3xl max-sm:text-2xl";
       break;
     case "h4":
-      variantStyles = "text-4xl";
+      variantStyles = "text-4xl max-lg:text-3xl max-md:text-2xl max-sm:text-xl";
       break;
     case "h5":
-      variantStyles = "text-3xl";
+      variantStyles = "text-3xl max-lg:text-2xl max-md:text-xl max-sm:text-lg";
       break;
     case "lead":
-      variantStyles = "text-2xl";
+      variantStyles = "text-2xl max-lg:text-xl max-md:text-lg max-sm:text-base";
       break;
     case "body-lg":
-      variantStyles = "text-lg";
+      variantStyles =
+        "text-lg max-lg:text-base max-md:text-sm max-sm:text-caption1";
       break;
     case "body-base":
-      variantStyles = "text-base";
+      variantStyles =
+        "text-base max-lg:text-sm max-md:text-caption1 max-sm:text-caption2";
       break;
     case "body-sm":
-      variantStyles = "text-sm";
+      variantStyles =
+        "text-sm max-lg:text-caption1 max-md:text-caption2 max-sm:text-caprion3";
       break;
     case "caption1":
-      variantStyles = "text-caption1";
+      variantStyles = "text-caption1 max-lg:text-caption2";
       break;
     case "caption2":
-      variantStyles = "text-caption2";
+      variantStyles = "text-caption2 max-sm:text-caption3";
       break;
     case "caption3":
-      variantStyles = "text-caption3";
+      variantStyles = "text-caption3 max-sm:text-caption4";
       break;
     case "caption4":
       variantStyles = "text-caption4";
@@ -92,19 +96,19 @@ export const Typography = ({
   }
   switch (theme) {
     case "black": // Default
-      colorStyles = "text-gray";
+      colorStyles = "text-gray dark:text-white";
       break;
     case "gray":
-      colorStyles = "text-gray-700";
+      colorStyles = "text-gray-700 dark:text-gray-500";
       break;
     case "white":
       colorStyles = "text-white";
       break;
     case "primary":
-      colorStyles = "text-primary dark:text-dark-primary";
+      colorStyles = "text-primary";
       break;
     case "secondary":
-      colorStyles = "text-secondary dark:text-dark-secondary";
+      colorStyles = "text-secondary";
       break;
     case "danger":
       colorStyles = "text-alert-danger";
@@ -116,17 +120,20 @@ export const Typography = ({
       colorStyles = "text-alert-warning";
       break;
   }
+  switch (weight) {
+    case "regular": // Default
+      font = "font-normal";
+      break;
+    case "medium":
+      font = "font-medium";
+      break;
+    case "bold":
+      font = "font-bold";
+      break;
+  }
 
   return (
-    <Component
-      className={clsx(
-        variantStyles,
-        colorStyles,
-        weight == "medium" && "font-medium",
-        className,
-        isDarkMode && "dark"
-      )}
-    >
+    <Component className={clsx(variantStyles, colorStyles, font, className)}>
       {children}
     </Component>
   );

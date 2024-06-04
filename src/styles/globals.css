@@ -4,8 +4,7 @@
 
 /* Largeur de la scrollbar */
 * {
-  scrollbar-width: thin;
-  scrollbar-color: blue;
+  scrollbar-width: none;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -15,6 +14,27 @@
 html,
 body {
   scroll-behavior: smooth;
+}
+
+.grid-custum {
+  display: grid;
+  grid-template-columns: 43% 60%;
+}
+
+.flex-center {
+  @apply flex items-center justify-center
+}
+
+.flex-center-sm {
+  @apply max-sm:flex max-sm:items-center max-sm:justify-center
+}
+
+.flex-center-lg {
+  @apply max-lg:flex max-lg:items-center max-lg:justify-center
+}
+
+.flex-between {
+  @apply flex items-center justify-between
 }
 
 .blur-nav {
@@ -33,39 +53,8 @@ a:hover {
   transition: all 0.3s ease-in-out;
 }
 
-.active {
-  color: blueviolet;
-}
-
 .word-space {
   word-spacing: 5px;
-}
-
-/* Styles personnalisés pour la scrollbar */
-::-webkit-scrollbar {
-  height: 5px;
-  width: 5px;
-}
-
-::-webkit-scrollbar {
-  @apply dark:bg-gray;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-  /* Couleur de fond de la piste */
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-secondary;
-  border-radius: 20px;
-  -webkit-border-radius: 8ex;
-  /* Couleur du curseur */
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-secondary-600;
-  /* Couleur du curseur au survol */
 }
 
 .toogle-animated {
@@ -76,6 +65,53 @@ a:hover {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Menu mobile */
+.toggle {
+  position: relative;
+  width: 22px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.toggle span {
+  position: absolute;
+  right: 0;
+  width: 24px;
+  height: 2px;
+  @apply bg-gray dark:bg-white;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+
+.toggle span:nth-child(1) {
+  transform: translateY(-8px);
+
+}
+
+.toggle.active span:nth-child(1) {
+  width: 24px;
+  transform: translateY(0px) rotate(45deg);
+  transition-delay: 0.12s;
+}
+
+.toggle span:nth-child(2) {
+  transform: translateY(8px);
+}
+
+.toggle.active span:nth-child(2) {
+  width: 24px;
+  transform: translateY(0px) rotate(315deg);
+  transition-delay: 0.2s;
+}
+
+.toggle.active span:nth-child(3) {
+  transform: translateX(60px);
 }
 
 
@@ -381,7 +417,7 @@ li button {
   box-shadow: 4vmin 0 0.536079918567388vmin currentColor;
 }
 
-.background span:nth-child(21) {
+/*.background span:nth-child(21) {
   color: #ff0080;
   top: 7%;
   left: 25%;
@@ -669,4 +705,4 @@ li button {
   animation-delay: -14s;
   transform-origin: -13vw -19vh;
   box-shadow: -4vmin 0 1.3063613909790655vmin currentColor;
-}
+}*/

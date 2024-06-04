@@ -1,15 +1,14 @@
 import { FormsType } from "@/types/forms";
 import { Container } from "@/ui/components/container/Container";
 import { Box } from "@/ui/design-system/box/box";
+import { TexteSection } from "@/ui/design-system/text-section/TexteSection";
 import { Typography } from "@/ui/design-system/typography/Typography";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext } from "react";
+import React from "react";
 import { RiAtLine, RiMessengerLine, RiWhatsappLine } from "react-icons/ri";
 import { v4 as uuidv4 } from "uuid";
 import { ContactForm } from "./contact.form";
-import { DarkModeContext } from "@/ui/components/darkMode/DarkModeGlobal";
-import clsx from "clsx";
 
 interface Props {
   form: FormsType;
@@ -40,8 +39,6 @@ const contactData: ContactProps[] = [
 ];
 
 export const ContactView = ({ form }: Props) => {
-  const { isDarkMode } = useContext(DarkModeContext);
-
   const contactLst = contactData.map((contact) => (
     <Link key={uuidv4()} href={contact.link}>
       <Box
@@ -64,38 +61,39 @@ export const ContactView = ({ form }: Props) => {
   ));
 
   return (
-    <Container
-      className={clsx(
-        "flex justify-center items-center gap-8 py-20",
-        isDarkMode && "dark"
-      )}
-      id="contact"
-    >
-      <div className="flex items-center">
-        <div className="relative w-96 h-[531px] flex flex-col justify-end">
-          <Image
-            src="/assets/images/phone.png"
-            alt="contact"
-            width={400}
-            height={300}
-            className="mb-4"
-          />
-          {contactLst}
-        </div>
-      </div>
-      <div className="flex items-center">
-        <Box>
-          <Typography
-            variant="h5"
-            component="h1"
-            className=" text-center dark:text-white"
-          >
-            To contact me
-          </Typography>
+    <>
+      <TexteSection title="To Contact Me" />
 
-          <ContactForm form={form} />
-        </Box>
-      </div>
-    </Container>
+      <Container
+        className="flex justify-center items-center gap-8 py-20 max-md:flex-col max-md:gap-5"
+        id="contact"
+      >
+        <div className="flex items-center">
+          <div className=" w-96 max-lg:w-80 max-md:w-96 max-sm:w-full h-[531px] max-md:h-[500px]  max-sm:h-[240px] flex flex-col justify-end">
+            <Image
+              src="/assets/images/phone.png"
+              alt="contact"
+              width={400}
+              height={300}
+              className="mb-4 max-sm:hidden"
+            />
+            {contactLst}
+          </div>
+        </div>
+        <div className="flex items-center">
+          <Box className="max-[500px]:px-3">
+            <Typography
+              variant="h5"
+              component="h1"
+              className=" text-center dark:text-white"
+            >
+              To Send an e-mail
+            </Typography>
+
+            <ContactForm form={form} />
+          </Box>
+        </div>
+      </Container>
+    </>
   );
 };

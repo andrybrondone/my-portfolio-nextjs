@@ -3,9 +3,10 @@ import { useContext } from "react";
 
 interface Props {
   size?: "very-small" | "small" | "medium" | "large";
+  className?: string;
 }
 
-export const Logo = ({ size = "medium" }: Props) => {
+export const Logo = ({ size = "medium", className }: Props) => {
   const { isDarkMode } = useContext(DarkModeContext);
 
   let sizeLogo: number;
@@ -15,7 +16,7 @@ export const Logo = ({ size = "medium" }: Props) => {
       sizeLogo = 34;
       break;
     case "small":
-      sizeLogo = 55;
+      sizeLogo = 53;
       break;
     case "medium": //default
       sizeLogo = 88;
@@ -32,6 +33,7 @@ export const Logo = ({ size = "medium" }: Props) => {
         xmlnsXlink="http://www.w3.org/1999/xlink"
         width={sizeLogo}
         viewBox="0 0 59 59"
+        className={className}
       >
         <defs>
           <clipPath id="clip-path">

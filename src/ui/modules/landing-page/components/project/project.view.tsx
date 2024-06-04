@@ -1,13 +1,10 @@
 import { LinkType } from "@/lib/link-type";
 import { Container } from "@/ui/components/container/Container";
-import { DarkModeContext } from "@/ui/components/darkMode/DarkModeGlobal";
 import { SocialNetworksButtons } from "@/ui/components/navigation/social-networks-buttons";
 import { Button } from "@/ui/design-system/button/Button";
 import { TexteSection } from "@/ui/design-system/text-section/TexteSection";
 import { Typography } from "@/ui/design-system/typography/Typography";
-import clsx from "clsx";
 import Image from "next/image";
-import { useContext } from "react";
 import { RiGithubFill } from "react-icons/ri";
 import { v4 as uuidv4 } from "uuid";
 
@@ -50,8 +47,6 @@ const projectData: ProjectListInterface[] = [
 ];
 
 export const ProjectView = () => {
-  const { isDarkMode } = useContext(DarkModeContext);
-
   const projectList = projectData.map((about) => (
     <div
       key={uuidv4()}
@@ -91,21 +86,18 @@ export const ProjectView = () => {
   ));
 
   return (
-    <div
-      className={clsx(
-        "bg-gray-300 mb-10 pt-10 dark:bg-dark-gray",
-        isDarkMode && "dark"
-      )}
-      id="project"
-    >
+    <div className="bg-gray-300 mb-10 pt-10 dark:bg-dark-gray" id="project">
       <TexteSection title="My Recent Project" />
-      <Container className="grid grid-cols-12 gap-24 pt-8 pb-24">
-        <div className="col-span-7 grid grid-cols-2 gap-7">{projectList}</div>
-        <div className="flex flex-col justify-between col-span-5 gap-10">
+      <Container className="grid grid-cols-12 gap-10 max-sm:gap-14 pt-8 pb-24 max-lg:grid-cols-none max-lg:flex max-lg:flex-col-reverse">
+        <div className="col-span-7 grid grid-cols-2 gap-5 max-lg:mx-[5%] max-md:mx-[1%] max-sm:gap-4 max-sm:grid-cols-none max-sm:mx-4">
+          {projectList}
+        </div>
+        <div className="flex flex-col justify-between col-span-5 gap-10 max-lg:text-center">
           <div>
             <Typography
               variant="h2"
               component="h2"
+              weight="bold"
               className="mb-5 word-space dark:text-dark-primary"
             >
               The projects already completed
@@ -114,19 +106,21 @@ export const ProjectView = () => {
               variant="body-lg"
               theme="gray"
               component="p"
-              className="mb-10 text-justify dark:text-primary-300"
+              className="mb-10 dark:text-primary-300"
             >
               Le code source de ce portfolio est aussi disponible sur mon GitHub
               s'il vous intéresse .
             </Typography>
-            <Button
-              variant="secondary"
-              baseUrl="https://github.com/andrybrondone"
-              linkType={LinkType.EXTERNAL}
-              icon={{ icon: RiGithubFill }}
-            >
-              Voir le code source
-            </Button>
+            <div className="flex-center-lg">
+              <Button
+                variant="secondary"
+                baseUrl="https://github.com/andrybrondone"
+                linkType={LinkType.EXTERNAL}
+                icon={{ icon: RiGithubFill }}
+              >
+                Voir le code source
+              </Button>
+            </div>
           </div>
           <div>
             <Typography
@@ -137,7 +131,8 @@ export const ProjectView = () => {
             >
               My social networks
             </Typography>
-            <SocialNetworksButtons />
+
+            <SocialNetworksButtons className="flex-center-lg" />
           </div>
         </div>
       </Container>

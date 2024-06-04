@@ -42,126 +42,21 @@ const config: Config = {
     },
 
     fontSize: {
-      "8xl": [
-        "70px",
-        {
-          lineHeight: "95px",
-          letterSpacing: "-5px",
-          fontWeight: "500",
-        },
-      ],
-      "7xl": [
-        "50px",
-        {
-          lineHeight: "70px",
-          letterSpacing: "-2px",
-          fontWeight: "600",
-        },
-      ],
-      "6xl": [
-        "40px",
-        {
-          lineHeight: "50px",
-          letterSpacing: "-2px",
-          fontWeight: "500",
-        },
-      ],
-      "5xl": [
-        "35px",
-        {
-          lineHeight: "54px",
-          letterSpacing: "-1.600000023841858px",
-          fontWeight: "500",
-        },
-      ],
-      "4xl": [
-        "30px",
-        {
-          lineHeight: "44px",
-          letterSpacing: "-0.5px",
-          fontWeight: "500",
-        },
-      ],
-      "3xl": [
-        "25px",
-        {
-          lineHeight: "34px",
-          letterSpacing: "-0.800000011920929px",
-          fontWeight: "500",
-        },
-      ],
-      "2xl": [
-        "23px",
-        {
-          lineHeight: "30px",
-          letterSpacing: "-1px",
-          fontWeight: "400",
-        },
-      ],
-      xl: [
-        "22px",
-        {
-          lineHeight: "30px",
-          letterSpacing: "-1px",
-          fontWeight: "400",
-        },
-      ],
-      lg: [
-        "21px",
-        {
-          lineHeight: "30px",
-          letterSpacing: "-0.800000011920929px",
-          fontWeight: "400",
-        },
-      ],
-      base: [
-        "20px",
-        {
-          lineHeight: "25px",
-          letterSpacing: "-0.699999988079071px",
-          fontWeight: "400",
-        },
-      ],
-      sm: [
-        "19px",
-        {
-          lineHeight: "28px",
-          letterSpacing: "-0.6000000238418579px",
-          fontWeight: "400",
-        },
-      ],
-      caption1: [
-        "18px",
-        {
-          lineHeight: "24px",
-          letterSpacing: "-0.6000000238418579px",
-          fontWeight: "400",
-        },
-      ],
-      caption2: [
-        "17px",
-        {
-          lineHeight: "20px",
-          letterSpacing: "-0.30000001192092896px",
-          fontWeight: "400",
-        },
-      ],
-      caption3: [
-        "16px",
-        {
-          lineHeight: "18px",
-          letterSpacing: "-0.5px",
-          fontWeight: "400",
-        },
-      ],
-      caption4: [
-        "14px",
-        {
-          lineHeight: "15px",
-          letterSpacing: "-0.20000000298023224px",
-          fontWeight: "400",
-        },
-      ],
+      "8xl": "50px",
+      "7xl": "42px",
+      "6xl": "36px",
+      "5xl": "30px",
+      "4xl": "26px",
+      "3xl": "24px",
+      "2xl": "23px",
+      xl: "21px",
+      lg: "20px",
+      base: "19px",
+      sm: "18px",
+      caption1: "17px",
+      caption2: "16px",
+      caption3: "15px",
+      caption4: "14px",
     },
 
     borderRadius: {

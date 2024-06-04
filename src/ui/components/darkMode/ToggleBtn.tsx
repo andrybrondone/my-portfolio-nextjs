@@ -4,7 +4,11 @@ import { RiMoonClearFill, RiSunFill } from "react-icons/ri";
 import { setTimeout } from "timers";
 import { DarkModeContext } from "./DarkModeGlobal";
 
-export const ToggleBtn = () => {
+interface Props {
+  className?: string;
+}
+
+export const ToggleBtn = ({ className }: Props) => {
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
 
   useEffect(() => {
@@ -22,12 +26,12 @@ export const ToggleBtn = () => {
   }, [isDarkMode]);
 
   return (
-    <div className={clsx(isDarkMode && "dark")}>
+    <div className={clsx(className, isDarkMode && "dark")}>
       <div
-        className="bg-gray-400 w-14 h-7 rounded-[10rem] px-[3px] cursor-pointer shadow-sm relative flex items-center dark:bg-gray-700"
+        className="bg-gray-400 w-11 h-5 rounded-[10rem] cursor-pointer shadow-sm relative flex items-center  dark:bg-secondary/50"
         onClick={toggleDarkMode}
       >
-        <div className="bg-white w-6 h-6 rounded-full absolute dark:bg-gray-800 dark:translate-x-[26px]">
+        <div className="bg-white shadow w-6 h-6 rounded-full absolute dark:bg-secondary dark:translate-x-[20px]">
           <div
             className="toogle-anim
               w-full h-full flex justify-center items-center"

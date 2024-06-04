@@ -25,6 +25,11 @@ const skillsData: SkillsListInterface[] = [
     title: "Next JS",
   },
   {
+    imagePath: "/assets/images/typescript.png",
+    imageAlt: "TypeScript icon",
+    title: "TypeScript",
+  },
+  {
     imagePath: "/assets/images/tailwind.png",
     imageAlt: "tailwind icon",
     title: "tailwind CSS",
@@ -35,14 +40,9 @@ const skillsData: SkillsListInterface[] = [
     title: "NodeJS",
   },
   {
-    imagePath: "/assets/images/graphql.png",
-    imageAlt: "GraphQL icon",
-    title: "GraphQL",
-  },
-  {
-    imagePath: "/assets/images/firebase.png",
-    imageAlt: "firebase icon",
-    title: "firebase",
+    imagePath: "/assets/images/mysql.png",
+    imageAlt: "MySQL icon",
+    title: "MySQL",
   },
 ];
 
@@ -72,9 +72,9 @@ export const SkillsView = () => {
   return (
     <Container className=" my-8">
       <TexteSection title="My Skills" />
-      <div className="flex justify-evenly items-center">
-        <div className="flex flex-col justify-center max-w-2xl space-y-5">
-          <div className="flex items-center gap-2">
+      <div className="flex justify-evenly items-center max-lg:flex-col max-lg:mt-6">
+        <div className="flex flex-col justify-center lg:max-w-[40rem] space-y-5 max-lg:text-center">
+          <div className="flex items-center gap-2 max-lg:justify-center">
             <Logo size="very-small" />
             <Typography
               variant="caption2"
@@ -92,17 +92,19 @@ export const SkillsView = () => {
             variant="body-sm"
             component="p"
             theme="gray"
-            className="max-w-lg dark:text-primary-300"
+            className="lg:max-w-lg dark:text-primary-300"
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
             repellendus ullam a explicabo maxime aperiam quod impedit quasi quas
             alias?
           </Typography>
-          <Button baseUrl="/#" linkType={LinkType.INTERNAL}>
-            Lorem ipsum dolor
-          </Button>
+          <div className="flex-center-lg">
+            <Button baseUrl="/#contact" linkType={LinkType.INTERNAL}>
+              Contact me
+            </Button>
+          </div>
         </div>
-        <div className="grid grid-cols-2 gap-4 py-8 select-none">
+        <div className="grid grid-cols-2 max-lg:grid-cols-4 max-md:grid-cols-2 gap-4 py-8 select-none">
           {skillsList}
         </div>
       </div>

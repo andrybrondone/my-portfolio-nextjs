@@ -15,13 +15,10 @@ export const Box = ({
   padding_x = "px-9",
   padding_y = "py-9",
 }: Props) => {
-  const { isDarkMode } = useContext(DarkModeContext);
-
   return (
     <div
       className={clsx(
-        isDarkMode && "dark",
-        "border border-gray-400 shadow rounded dark:border-gray-800  dark:shadow dark:shadow-gray-800",
+        "border border-gray-400 shadow rounded dark:border-gray-800 dark:shadow dark:shadow-gray-800",
         padding_x,
         padding_y,
         className

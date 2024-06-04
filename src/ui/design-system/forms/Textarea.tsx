@@ -24,10 +24,8 @@ export const Textarea = ({
   required = true,
   isAutocompleted = false,
 }: Props) => {
-  const { isDarkMode } = useContext(DarkModeContext);
-
   return (
-    <div className={clsx("space-y-2", isDarkMode && "dark")}>
+    <div className="space-y-2">
       <textarea
         rows="4"
         placeholder={placeholder}

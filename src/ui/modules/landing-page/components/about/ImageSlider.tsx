@@ -1,11 +1,8 @@
-import { DarkModeContext } from "@/ui/components/darkMode/DarkModeGlobal";
-import clsx from "clsx";
 import { motion } from "framer-motion";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { RiArrowLeftCircleLine, RiArrowRightCircleFill } from "react-icons/ri";
 
 export const ImageSlider = () => {
-  const { isDarkMode } = useContext(DarkModeContext);
   const [positionIndexes, setPositionIndexes] = useState([0, 1, 2, 3, 4]);
 
   const handleNext = () => {
@@ -45,12 +42,7 @@ export const ImageSlider = () => {
     right1: { x: "50%", scale: 0.7, zIndex: 3 },
   };
   return (
-    <div
-      className={clsx(
-        "flex items-center flex-col justify-center",
-        isDarkMode && "dark"
-      )}
-    >
+    <div className="flex items-center flex-col justify-center">
       {images.map((image, index) => (
         <motion.img
           key={index}

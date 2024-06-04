@@ -1,10 +1,7 @@
 import { Container } from "@/ui/components/container/Container";
-import { DarkModeContext } from "@/ui/components/darkMode/DarkModeGlobal";
 import { TexteSection } from "@/ui/design-system/text-section/TexteSection";
 import { Typography } from "@/ui/design-system/typography/Typography";
-import clsx from "clsx";
 import { motion } from "framer-motion";
-import { useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { AnimationNumbersConatiner } from "../animation-numbers-container/AnimationNumbersContainer";
 import { ImageSlider } from "./ImageSlider";
@@ -34,8 +31,6 @@ const numberData: NumberDataListInterface[] = [
 ];
 
 export const AboutView = () => {
-  const { isDarkMode } = useContext(DarkModeContext);
-
   const numberLst = numberData.map((number) => (
     <div key={uuidv4()}>
       <motion.div
@@ -61,10 +56,10 @@ export const AboutView = () => {
   ));
 
   return (
-    <div id="about" className={clsx("pt-24", isDarkMode && "dark")}>
+    <div id="about" className="pt-24">
       <div className="bg-gray-300 pt-10 dark:bg-dark-gray">
         <Container>
-          <div className="flex items-center justify-center gap-5">
+          <div className="flex items-center justify-center gap-5 max-sm:gap-2 flex-wrap">
             {numberLst}
           </div>
           <div className="relative -top-20">

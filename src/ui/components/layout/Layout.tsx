@@ -13,11 +13,9 @@ export const Layout = ({ children }: Props) => {
 
   return (
     <div className={clsx(isDarkMode && "dark")}>
-      <div className="">
-        <Navigation />
-        {children}
-        <Footer />
-      </div>
+      <Navigation />
+      {children}
+      <Footer />
     </div>
   );
 };

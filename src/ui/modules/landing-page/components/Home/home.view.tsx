@@ -1,18 +1,13 @@
 import { LinkType } from "@/lib/link-type";
 import { Container } from "@/ui/components/container/Container";
-import { DarkModeContext } from "@/ui/components/darkMode/DarkModeGlobal";
 import { Background } from "@/ui/design-system/background/Background";
 import { Button } from "@/ui/design-system/button/Button";
 import { Typography } from "@/ui/design-system/typography/Typography";
-import clsx from "clsx";
 import Image from "next/image";
-import { useContext } from "react";
 import { AiOutlineDownload } from "react-icons/ai";
 import { RiArrowDropRightLine } from "react-icons/ri";
 
 export const HomeView = () => {
-  const { isDarkMode } = useContext(DarkModeContext);
-
   const aboutScroll = () => {
     const about = document.getElementById("about");
     about?.scrollIntoView({
@@ -21,20 +16,20 @@ export const HomeView = () => {
   };
 
   return (
-    <div className={clsx(isDarkMode && "dark")}>
+    <>
       <Background />
-      <Container className="flex items-center justify-between pt-2 overflow-hidden mt-16">
-        <div className="w-[500px] h-[585px]">
+      <Container className="flex-center gap-10 max-lg:gap-5 max-md:gap-3 py-12 max-md:py-0 overflow-hidden mt-20 max-md:flex-wrap-reverse">
+        <div className="min-w-[350px] min-h-[350px] max-md:w-90% max-md:my-7">
           <Image
             priority={true}
             src="/assets/images/me.jpg"
             alt="Ma photo"
-            width={495}
-            height={585}
-            className="rounded-[100px] dark:shadow-4xl"
+            width={350}
+            height={350}
+            className="rounded-full dark:shadow-4xl max-md:rounded-t-full max-md:rounded-b"
           />
         </div>
-        <div className="w-full max-w-2xl space-y-7 text-justify">
+        <div className="space-y-7 text-justify max-md:text-center">
           <Typography
             variant="body-base"
             theme="gray"
@@ -47,8 +42,9 @@ export const HomeView = () => {
             variant="h1"
             component="h1"
             className="mx-w-lg dark:text-white"
+            weight="bold"
           >
-            Brondone ANDRIAMBOLOLOMANANA
+            Brondone <br /> ANDRIAMBOLOLOMANANA
           </Typography>
           <div>
             <Typography
@@ -68,7 +64,7 @@ export const HomeView = () => {
               Web Developper
             </Typography>
           </div>
-          <div className="space-x-5 pt-2.5">
+          <div className="space-x-5 pt-2.5 flex items-center max-md:justify-center">
             <Button
               baseUrl="/projet-marketing.pdf"
               linkType={LinkType.EXTERNAL}
@@ -87,6 +83,6 @@ export const HomeView = () => {
           </div>
         </div>
       </Container>
-    </div>
+    </>
   );
 };
