@@ -16,6 +16,10 @@ body {
   scroll-behavior: smooth;
 }
 
+.font-logo {
+  font-family: sans-serif;
+}
+
 .grid-custum {
   display: grid;
   grid-template-columns: 43% 60%;

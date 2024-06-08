@@ -8,6 +8,7 @@ import { Spinner } from "../spinner/Spinner";
 interface Props {
   variant?:
     | "accent"
+    | "accent-rounded-full"
     | "secondary"
     | "outline"
     | "disabled"
@@ -74,6 +75,11 @@ export const Button = ({
     case "accent": // default
       variantStyle =
         "bg-primary hover:bg-primary-400 border border-primary  dark:bg-primary-400 text-white rounded dark:hover:shadow-primary-400";
+      break;
+
+    case "accent-rounded-full":
+      variantStyle =
+        "bg-primary hover:bg-primary-400 border border-primary md:w-20 md:h-20 rounded-full max-md:w-14 max-md:h-14 dark:bg-primary-400 text-white dark:hover:shadow-primary-400";
       break;
 
     case "secondary":

@@ -35,7 +35,7 @@ export const Typography = ({
   variant = "h3",
   component: Component = "div",
   theme = "black",
-  weight = "medium",
+  weight = "regular",
   className,
   children,
 }: Props) => {

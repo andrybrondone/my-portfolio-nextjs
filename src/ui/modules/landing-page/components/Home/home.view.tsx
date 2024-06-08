@@ -70,6 +70,7 @@ export const HomeView = () => {
               linkType={LinkType.EXTERNAL}
               icon={{ icon: AiOutlineDownload }}
               className="dark:shadow-3xl animate-bounce"
+              variant="accent-rounded-full"
             >
               CV
             </Button>
