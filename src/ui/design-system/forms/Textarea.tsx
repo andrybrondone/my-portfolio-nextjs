@@ -1,56 +1,34 @@
 import clsx from "clsx";
-import { Typography } from "../typography/Typography";
-import { DarkModeContext } from "@/ui/components/darkMode/DarkModeGlobal";
-import { useContext } from "react";
+import { FieldAttributes, useField } from "formik";
+import { InputHTMLAttributes } from "react";
 
-interface Props {
-  isLoading: boolean;
-  placeholder: string;
-  register: any;
-  errors: any;
-  errorMsg?: string;
-  id: string;
-  required?: boolean;
-  isAutocompleted?: boolean;
+interface TextareaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
+  className?: string;
 }
 
-export const Textarea = ({
-  isLoading,
-  placeholder,
-  register,
-  errors,
-  errorMsg = "Ce champ doit être renseigner",
-  id,
-  required = true,
-  isAutocompleted = false,
-}: Props) => {
-  return (
-    <div className="space-y-2">
-      <textarea
-        rows="4"
-        placeholder={placeholder}
-        className={clsx(
-          isLoading && "cursor-not-allowed",
-          errors[id]
-            ? "placeholder-alert-danger text-alert-danger border-alert-danger"
-            : " placeholder-gray-700 border-gray-400 dark:placeholder-primary-300 dark:border-gray-800",
-          "w-full p-4 font-light border rounded focus:outline-none focus:ring-1 focus:ring-secondary dark:text-primary-200 dark:focus:ring-dark-secondary dark:bg-gray-800"
-        )}
-        disabled={isLoading}
-        {...register(id, {
-          required: {
-            value: required,
-            message: errorMsg,
-          },
-        })}
-        autoComplete={isAutocompleted ? "on" : "off"}
-      ></textarea>
+export function Textarea({ className, ...props }: TextareaProps) {
+  const [field, meta] = useField(props as FieldAttributes<string>);
 
-      {errors[id] && (
-        <Typography variant="caption4" component="div" theme="danger">
-          {errors[id]?.message}
-        </Typography>
-      )}
+  return (
+    <div className="flex flex-col gap-1 dark:text-white">
+      <textarea
+        rows={4}
+        {...field}
+        {...props}
+        autoComplete="off"
+        className={clsx(
+          meta.touched && meta.error
+            ? "border-alert-danger focus:ring-alert-danger dark:focus:ring-alert-danger dark:border-alert-danger"
+            : "focus:ring-secondary border-gray-400 dark:focus:ring-dark-secondary dark:border-gray-800",
+          "max-md:text-caption2 max-sm:text-caption3 p-3 w-full font-light border rounded focus:outline-none focus:ring-1 dark:text-primary-200 dark:bg-gray-800 placeholder-gray-700 dark:placeholder-gray-500/80",
+          className
+        )}
+      ></textarea>
+      <div className="h-3">
+        {meta.touched && meta.error && (
+          <div className="text-alert-danger text-caption4">{meta.error}</div>
+        )}
+      </div>
     </div>
   );
-};
+}

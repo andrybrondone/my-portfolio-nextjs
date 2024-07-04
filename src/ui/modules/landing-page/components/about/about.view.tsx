@@ -4,7 +4,7 @@ import { Typography } from "@/ui/design-system/typography/Typography";
 import { motion } from "framer-motion";
 import { v4 as uuidv4 } from "uuid";
 import { AnimationNumbersConatiner } from "../animation-numbers-container/AnimationNumbersContainer";
-import { ImageSlider } from "./ImageSlider";
+import OngletAbout from "./ongletAbout";
 
 interface NumberDataListInterface {
   value: number;
@@ -24,9 +24,9 @@ const numberData: NumberDataListInterface[] = [
     description: "Experiences",
   },
   {
-    value: 8,
+    value: 6,
     delay: 0.15,
-    description: "Project Completed",
+    description: "Web technologie",
   },
 ];
 
@@ -76,7 +76,7 @@ export const AboutView = () => {
                 />
               </div>
             </div> */}
-            <ImageSlider />
+            <OngletAbout />
           </div>
         </Container>
       </div>

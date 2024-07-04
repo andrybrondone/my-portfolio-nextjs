@@ -1,65 +1,77 @@
+import { Container } from "@/ui/components/container/Container";
+import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import { RiAddBoxLine, RiListUnordered } from "react-icons/ri";
+import { Education } from "./Education";
+import { Experience } from "./Experience";
+import { Profil } from "./Profil";
 
-export interface Ingredient {
-  icon: string;
-  label: string;
-}
-
-export const allIngredients = [
-  { icon: "🍅", label: "Tomato" },
-  { icon: "🥬", label: "Lettuce" },
-  { icon: "🧀", label: "Cheese" },
-  { icon: "🥕", label: "Carrot" },
-  { icon: "🍌", label: "Banana" },
-  { icon: "🫐", label: "Blueberries" },
-  { icon: "🥂", label: "Champers?" },
+const allData = [
+  {
+    icon: <RiAddBoxLine />,
+    label: "Profil",
+    component: <Profil />,
+  },
+  {
+    icon: <RiListUnordered />,
+    label: "Educations",
+    component: <Education />,
+  },
+  {
+    icon: <RiListUnordered />,
+    label: "Experiences",
+    component: <Experience />,
+  },
 ];
 
-const [tomato, lettuce, cheese] = allIngredients;
-export const initialTabs = [tomato, lettuce, cheese];
+const initialTabs = allData;
 
-export function getNextIngredient(
-  ingredients: Ingredient[]
-): Ingredient | undefined {
-  const existing = new Set(ingredients);
-  return allIngredients.find((ingredient) => !existing.has(ingredient));
-}
-
-export const OngletAbout = () => {
+export default function OngletAbout() {
   const [selectedTab, setSelectedTab] = useState(initialTabs[0]);
 
   return (
-    <div className="w-[480px] h-[360px] rounded-[10px] overflow-hidden shadow-xl flex flex-col">
-      <nav className=" py-2 rounded-[10px] rounded-r-[0px] rounded-l-[0px] border bottom-[1px] border-secondary-200 h-11 bg-gray-300">
-        <ul>
+    <>
+      <Container className="mt-10 flex items-center justify-between gap-4 max-lg:flex-col">
+        <div className="flex lg:flex-col gap-10 max-sm:gap-0 max-sm:justify-between dark:text-white">
           {initialTabs.map((item) => (
-            <li
-              key={item.label}
-              className={item === selectedTab ? "selected" : ""}
-              onClick={() => setSelectedTab(item)}
-            >
-              {`${item.icon} ${item.label}`}
-              {item === selectedTab ? (
-                <motion.div className="underline" layoutId="underline" />
-              ) : null}
-            </li>
+            <div className="relative group" key={item.label}>
+              <p
+                className={clsx(
+                  "px-8 max-sm:px-5 py-2 cursor-pointer flex items-center gap-2 text-caption1 font-medium",
+                  item === selectedTab
+                    ? "selecte bg-secondary/5 rounded-t"
+                    : " hover:bg-secondary-200/10 transition"
+                )}
+                onClick={() => setSelectedTab(item)}
+              >
+                {item.icon}
+                {item.label}
+              </p>
+              <span
+                className={clsx(
+                  item === selectedTab
+                    ? "h-[2px] rounded inline-block bg-secondary  dark:bg-secondary-200 absolute left-1/2 -translate-x-1/2 w-full transition-[width] ease-in-out duration-300"
+                    : "h-[2px] rounded inline-block w-0 bg-secondary absolute left-0  group-hover:w-full transition-[width] ease-in-out duration-300 hover:font-medium"
+                )}
+              ></span>
+            </div>
           ))}
-        </ul>
-      </nav>
-      <main className="flex justify-center items-center bg-white text-[128px] flex-grow select-none">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={selectedTab ? selectedTab.label : "empty"}
-            initial={{ y: 10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -10, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            {selectedTab ? selectedTab.icon : "😋"}
-          </motion.div>
-        </AnimatePresence>
-      </main>
-    </div>
+        </div>
+        <div className="flex justify-center flex-grow w-full select-none h-[630px] relative bg-white dark:bg-gray-800">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedTab ? selectedTab.label : "empty"}
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -10, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              {selectedTab ? selectedTab.component : "😋"}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </Container>
+    </>
   );
-};
+}

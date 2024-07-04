@@ -1,4 +1,3 @@
-import { FormsType } from "@/types/forms";
 import { Container } from "@/ui/components/container/Container";
 import { Box } from "@/ui/design-system/box/box";
 import { TexteSection } from "@/ui/design-system/text-section/TexteSection";
@@ -9,10 +8,6 @@ import React from "react";
 import { RiAtLine, RiMessengerLine, RiWhatsappLine } from "react-icons/ri";
 import { v4 as uuidv4 } from "uuid";
 import { ContactForm } from "./contact.form";
-
-interface Props {
-  form: FormsType;
-}
 
 interface ContactProps {
   icon: React.ReactElement;
@@ -38,7 +33,7 @@ const contactData: ContactProps[] = [
   },
 ];
 
-export const ContactView = ({ form }: Props) => {
+export const ContactView = () => {
   const contactLst = contactData.map((contact) => (
     <Link key={uuidv4()} href={contact.link}>
       <Box
@@ -90,7 +85,7 @@ export const ContactView = ({ form }: Props) => {
               To Send an e-mail
             </Typography>
 
-            <ContactForm form={form} />
+            <ContactForm />
           </Box>
         </div>
       </Container>

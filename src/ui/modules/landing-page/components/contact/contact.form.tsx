@@ -1,69 +1,96 @@
-import { FormsType } from "@/types/forms";
-import { DarkModeContext } from "@/ui/components/darkMode/DarkModeGlobal";
 import { Button } from "@/ui/design-system/button/Button";
 import { Input } from "@/ui/design-system/forms/Input";
 import { Textarea } from "@/ui/design-system/forms/Textarea";
-import clsx from "clsx";
-import { useContext } from "react";
+import axios from "axios";
+import { Form, Formik, FormikHelpers } from "formik";
+import { toast } from "sonner";
+import * as Yup from "yup";
 
-interface Props {
-  form: FormsType;
+interface FormContactProps {
+  name: string;
+  email: string;
+  subject: string;
+  content: string;
 }
 
-export const ContactForm = ({ form }: Props) => {
-  const { isDarkMode } = useContext(DarkModeContext);
+const emailRegex =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
 
-  const { onSubmit, errors, isLoading, register, handleSubmit } = form;
+const initialValues: FormContactProps = {
+  name: "",
+  email: "",
+  subject: "",
+  content: "",
+};
+
+const validationSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(3, "Un nom doit contenir au moins 3 caractères")
+    .required("Ce champ est obligatoire"),
+  email: Yup.string()
+    .required("Ce champ est obligatoire")
+    .matches(emailRegex, "Veuillez entrer une adresse e-mail valide"),
+  subject: Yup.string()
+    .min(4, "Une adresse doit contenir au moins 4 caractères")
+    .required("Ce champ est obligatoire"),
+  content: Yup.string()
+    .min(4, "Une ville doit contenir au moins 4 caractères")
+    .required("Ce champ est obligatoire"),
+});
+
+export const ContactForm = () => {
+  const onSubmit = (
+    data: FormContactProps,
+    actions: FormikHelpers<FormContactProps>
+  ) => {
+    axios
+      .post("https://send-email-api-nodejs.onrender.com/api/send-email", data)
+      .then(() => {
+        toast.success("L'e-mail à bien été envoyé");
+        actions.resetForm();
+      })
+      .catch((error) => {
+        if (error.message === "Request failed with status code 500") {
+          toast.message(
+            "Erreur lors de l'envoi de l'e-mail. Veuillez vérifier votre connexion Internet."
+          );
+        } else {
+          console.error("Error : ", error);
+        }
+      });
+  };
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className={clsx("pt-8 pb-5 space-y-4", isDarkMode && "dark")}
-    >
-      <div className="flex justify-center gap-2 ">
-        <Input
-          isLoading={isLoading}
-          placeholder="Full Name *"
-          register={register}
-          errors={errors}
-          errorMsg="Champ obligatoire"
-          id="email"
-        />
-        <Input
-          isLoading={isLoading}
-          placeholder="Your email address *"
-          type="email"
-          register={register}
-          errors={errors}
-          errorMsg="Champ obligatoire"
-          id="email"
-        />
-      </div>
-      <Input
-        isLoading={isLoading}
-        placeholder="Object *"
-        register={register}
-        errors={errors}
-        errorMsg="Champ obligatoire"
-        id="object"
-      />
-      <Textarea
-        isLoading={isLoading}
-        placeholder="Message *"
-        register={register}
-        errors={errors}
-        errorMsg="Champ obligatoire"
-        id="subject"
-      />
-      <div className="flex justify-center items-center ">
-        <Button
-          isLoading={isLoading}
-          type="submit"
-          disabled
-          className="dark:bg-secondary rounded-[200px] w-32 dark:hover:shadow-5xl"
-        >
-          Send
-        </Button>
-      </div>
-    </form>
+    <>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
+      >
+        {({ isSubmitting }) => (
+          <Form className="pt-8 pb-5 space-y-4">
+            <div className="flex justify-center gap-2 ">
+              <Input name="name" type="text" placeholder="Full name *" />
+              <Input
+                name="email"
+                type="email"
+                placeholder="Your email address *"
+              />
+            </div>
+            <Input name="subject" type="text" placeholder="Subject *" />
+            <Textarea name="content" type="text" placeholder="Content *" />
+
+            <div className="flex justify-center items-center ">
+              <Button
+                isLoading={isSubmitting}
+                type="submit"
+                className="rounded-[200px] w-32"
+              >
+                Send
+              </Button>
+            </div>
+          </Form>
+        )}
+      </Formik>
+    </>
   );
 };

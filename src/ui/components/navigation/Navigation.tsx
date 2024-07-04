@@ -6,6 +6,7 @@ import { scrollToElement } from "@/utils/scrollToElement";
 import Link from "next/link";
 import { useContext } from "react";
 import { AiOutlineHome } from "react-icons/ai";
+import { toast } from "sonner";
 import { Container } from "../container/Container";
 import { ToggleBtn } from "../darkMode/ToggleBtn";
 import { ActiveLink } from "./active-link";
@@ -28,7 +29,11 @@ export const Navigation: React.FC<NavigationProps> = () => {
         <Link href="/">
           <div className="flex items-center gap-2.5 max-sm:gap-1 max-lg:gap-2">
             <Logo size="small" className="max-sm:w-[45px] max-lg:w-[50px]" />
-            <div>
+            <div
+              onClick={() => {
+                toast.success("tost");
+              }}
+            >
               <Typography
                 variant="h4"
                 component="h2"
@@ -58,7 +63,7 @@ export const Navigation: React.FC<NavigationProps> = () => {
           <ToggleBtn className="max-sm:hidden" />
           <Button
             action={() => scrollToElement("#contact".split("#")[1])}
-            className="rounded-[200px] max-lg:hidden"
+            className="rounded-[200px] max-lg:hidden "
           >
             Contact
           </Button>

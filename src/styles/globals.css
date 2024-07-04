@@ -11,6 +11,10 @@
   @apply transition-colors duration-200 ease-in-out
 }
 
+.transition-custom {
+  transition: all 0.3s ease-in-out;
+}
+
 html,
 body {
   scroll-behavior: smooth;
