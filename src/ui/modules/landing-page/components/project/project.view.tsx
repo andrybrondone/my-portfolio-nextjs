@@ -5,7 +5,7 @@ import { Button } from "@/ui/design-system/button/Button";
 import { TexteSection } from "@/ui/design-system/text-section/TexteSection";
 import { Typography } from "@/ui/design-system/typography/Typography";
 import Image from "next/image";
-import { RiGithubFill } from "react-icons/ri";
+import { RiGithubFill, RiLink } from "react-icons/ri";
 import { v4 as uuidv4 } from "uuid";
 
 interface ProjectListInterface {
@@ -13,74 +13,95 @@ interface ProjectListInterface {
   imageAlt: string;
   title: string;
   description: string;
+  appUrl: string;
+  gitUrl: string;
 }
 
 const projectData: ProjectListInterface[] = [
   {
-    imagePath: "/assets/images/achievement-5597527_640.png",
+    imagePath: "/assets/images/note.png",
     imageAlt: "illustration",
-    title: "[ 2023-2024 ] - L3",
+    title: "University Grade Management",
     description:
-      "Je suis actuelement en troisème année de licence professionnel à L'ENI Fianarantsoa",
+      "A university grade management app for adding grades, and generating reports.",
+    appUrl: "https://gestion-note-univ.web.app/",
+    gitUrl: "",
   },
   {
-    imagePath: "/assets/images/gears-1059756_640.png",
+    imagePath: "/assets/svg/1.svg",
     imageAlt: "illustration",
-    title: "[ 2022-2023 ] - L2",
+    title: "Simple CRUD Application",
     description:
-      "J'ai realisé un stage Chez l'ONG Nididae Antananarivo dans le cadre de la pratique",
+      "A basic CRUD application for creating, reading, updating, and deleting records.",
+    appUrl: "https://crud-location.web.app/",
+    gitUrl: "",
   },
   {
-    imagePath: "/assets/images/tool-145375_640.png",
+    imagePath: "/assets/images/tic-tac-toe.png",
     imageAlt: "illustration",
-    title: "[ 2021-2022 ] - L1",
+    title: "Tic-Tac-Toe Game",
     description:
-      "Premier pas dans l'étude superieur et dans le monde de l'informatique à L'ENI",
+      "A classic Tic-Tac-Toe game built with ReactJS, featuring player vs. player mode.",
+    appUrl: "",
+    gitUrl: "",
   },
-  {
-    imagePath: "/assets/images/write-33360_640.png",
-    imageAlt: "illustration",
-    title: "[ 2020-2021 ] - Terminal D",
-    description:
-      "Obtantion de mon baccalaureat serie D avec montien Bien ! avec montien Bien !",
-  },
+  // {
+  //   imagePath: "/assets/images/write-33360_640.png",
+  //   imageAlt: "illustration",
+  //   title: "[ 2020-2021 ] - Terminal D",
+  //   description:
+  //     "Obtantion de mon baccalaureat serie D avec montien Bien ! avec montien Bien !",
+  // },
 ];
 
 export const ProjectView = () => {
   const projectList = projectData.map((about) => (
     <div
       key={uuidv4()}
-      className="flex flex-col items-center justify-center bg-white rounded p-7 shadow animate hover:scale-[1.025] hover:shadow-2xl dark:bg-gray-800 dark:hover:shadow dark:hover:shadow-dark-secondary"
+      className="relative bg-white rounded shadow animate hover:scale-[1.025] hover:shadow-2xl dark:bg-gray-800 dark:hover:shadow dark:hover:shadow-dark-secondary"
     >
-      <div className="relative w-[130px] h-[130px] rounded-full mb-10 overflow-hidden">
-        <Image
-          fill
-          src={about.imagePath}
-          alt={about.imageAlt}
-          className="object-scale-down blur-2xl"
-        />
-        <Image
-          fill
-          src={about.imagePath}
-          alt={about.imageAlt}
-          className="object-scale-down"
-        />
+      <div className="px-7 pt-5 pb-14 flex flex-col items-center justify-center">
+        <div className="relative w-[130px] h-[130px] rounded-full mb-10 overflow-hidden">
+          <Image
+            fill
+            src={about.imagePath}
+            alt={about.imageAlt}
+            className="object-scale-down blur-2xl"
+          />
+          <Image
+            fill
+            src={about.imagePath}
+            alt={about.imageAlt}
+            className="object-scale-down"
+          />
+        </div>
+        <Typography
+          variant="body-sm"
+          component="h3"
+          weight="medium"
+          className=" font-bold text-center mb-2.5 text-secondary border-b-2 border-dotted pb-1.5"
+        >
+          {about.title}
+        </Typography>
+        <Typography
+          variant="caption2"
+          component="p"
+          theme="gray"
+          className="text-center mb-2.5 dark:text-primary-300"
+        >
+          {about.description}
+        </Typography>
       </div>
       <Typography
-        variant="body-sm"
-        component="h3"
-        weight="medium"
-        className=" font-bold text-center mb-2.5 text-secondary border-b-2 border-dotted pb-1.5"
+        variant="h1"
+        className="flex items-center justify-between absolute bottom-0 rounded-b px-7 py-1 w-full bg-secondary/30 dark:bg-secondary/40"
       >
-        {about.title}
-      </Typography>
-      <Typography
-        variant="caption2"
-        component="p"
-        theme="gray"
-        className="text-center mb-2.5 dark:text-primary-300"
-      >
-        {about.description}
+        <a href={about.appUrl} target="_blank">
+          <RiLink />
+        </a>
+        <a href={about.gitUrl} target="_blank">
+          <RiGithubFill />
+        </a>
       </Typography>
     </div>
   ));
@@ -88,7 +109,7 @@ export const ProjectView = () => {
   return (
     <div className="bg-gray-300 mb-10 pt-10 dark:bg-dark-gray" id="project">
       <TexteSection title="My Recent Project" />
-      <Container className="grid grid-cols-12 gap-10 max-sm:gap-14 pt-8 pb-24 max-lg:grid-cols-none max-lg:flex max-lg:flex-col-reverse">
+      <Container className="grid grid-cols-12 gap-10 max-sm:gap-14 pt-8 pb-24 max-lg:grid-cols-none max-lg:flex max-lg:flex-col">
         <div className="col-span-7 grid grid-cols-2 gap-5 max-lg:mx-[5%] max-md:mx-[1%] max-sm:gap-4 max-sm:grid-cols-none max-sm:mx-4">
           {projectList}
         </div>
@@ -108,8 +129,8 @@ export const ProjectView = () => {
               component="p"
               className="mb-10 dark:text-primary-300"
             >
-              Le code source de ce portfolio est aussi disponible sur mon GitHub
-              s'il vous intéresse .
+              The source code of this portfolio is also available on my GitHub
+              if you are interested .
             </Typography>
             <div className="flex-center-lg">
               <Button
@@ -118,7 +139,7 @@ export const ProjectView = () => {
                 linkType={LinkType.EXTERNAL}
                 icon={{ icon: RiGithubFill }}
               >
-                Voir le code source
+                View the source code
               </Button>
             </div>
           </div>

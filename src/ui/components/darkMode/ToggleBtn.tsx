@@ -28,14 +28,11 @@ export const ToggleBtn = ({ className }: Props) => {
   return (
     <div className={clsx(className, isDarkMode && "dark")}>
       <div
-        className="bg-gray-400 w-11 h-5 rounded-[10rem] cursor-pointer shadow-sm relative flex items-center  dark:bg-secondary/50"
+        className="bg-gray-400 w-11 h-5 max-md:w-9 max-md:h-4 rounded-[10rem] max-md:rounded-[20px] cursor-pointer shadow-sm relative flex items-center  dark:bg-secondary/50"
         onClick={toggleDarkMode}
       >
-        <div className="bg-white shadow w-6 h-6 rounded-full absolute dark:bg-secondary dark:translate-x-[20px]">
-          <div
-            className="toogle-anim
-              w-full h-full flex justify-center items-center"
-          >
+        <div className="bg-white shadow w-6 h-6 max-md:w-5 max-md:h-5 rounded-full absolute dark:bg-secondary dark:translate-x-[20px] max-md:dark:translate-x-[15px]">
+          <div className="toogle-anim w-full h-full flex justify-center items-center">
             {isDarkMode ? (
               <RiMoonClearFill className="text-white text-sm" />
             ) : (

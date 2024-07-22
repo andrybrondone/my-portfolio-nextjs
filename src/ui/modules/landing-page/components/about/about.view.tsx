@@ -26,7 +26,7 @@ const numberData: NumberDataListInterface[] = [
   {
     value: 6,
     delay: 0.15,
-    description: "Web technologie",
+    description: "Web technology skills",
   },
 ];
 
@@ -64,18 +64,6 @@ export const AboutView = () => {
           </div>
           <div className="relative -top-20">
             <TexteSection title="About me" />
-            {/* <div className="flex justify-evenly items-center my-8">
-              <OngletAbout />
-              <div className="relative h-96 w-96 rounded-full">
-                <Image
-                  src="/assets/images/pen.jpg"
-                  alt=""
-                  priority
-                  fill
-                  className=" rounded-full object-cover object-left"
-                />
-              </div>
-            </div> */}
             <OngletAbout />
           </div>
         </Container>

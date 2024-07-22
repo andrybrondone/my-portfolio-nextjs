@@ -82,11 +82,11 @@ export const SkillsView = () => {
               weight="medium"
               className="dark:text-primary-300"
             >
-              Mon portfolio
+              My portfolio
             </Typography>
           </div>
           <Typography variant="h2" component="h2" className="dark:text-white">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Expertise in Modern Web Development Technologies.
           </Typography>
           <Typography
             variant="body-sm"
@@ -94,9 +94,10 @@ export const SkillsView = () => {
             theme="gray"
             className="lg:max-w-lg dark:text-primary-300"
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-            repellendus ullam a explicabo maxime aperiam quod impedit quasi quas
-            alias?
+            I am continuously learning and expanding my skill set to stay
+            updated with the latest industry trends and technologies. If you
+            would like to know more about my skills or discuss a project, feel
+            free to
           </Typography>
           <div className="flex-center-lg">
             <Button baseUrl="/#contact" linkType={LinkType.INTERNAL}>

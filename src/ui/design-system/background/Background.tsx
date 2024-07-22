@@ -1,5 +1,5 @@
 export const Background = () => {
-  const elements = Array(20).fill(null);
+  const elements = Array(15).fill(null);
 
   return (
     <div className="background dark:bg-gray">

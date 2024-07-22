@@ -3,7 +3,7 @@ import { Input } from "@/ui/design-system/forms/Input";
 import { Textarea } from "@/ui/design-system/forms/Textarea";
 import axios from "axios";
 import { Form, Formik, FormikHelpers } from "formik";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 import * as Yup from "yup";
 
 interface FormContactProps {
@@ -50,13 +50,17 @@ export const ContactForm = () => {
         actions.resetForm();
       })
       .catch((error) => {
-        if (error.message === "Request failed with status code 500") {
-          toast.message(
-            "Erreur lors de l'envoi de l'e-mail. Veuillez vérifier votre connexion Internet."
-          );
+        if (
+          error.message === "Request failed with status code 500" ||
+          error.message === "Network Error"
+        ) {
+          toast.error("Veuillez vérifier votre connexion Internet !");
         } else {
           console.error("Error : ", error);
         }
+      })
+      .finally(() => {
+        actions.setSubmitting(false);
       });
   };
   return (

@@ -2,24 +2,24 @@ import { Container } from "@/ui/components/container/Container";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { RiAddBoxLine, RiListUnordered } from "react-icons/ri";
+import { FaBriefcase, FaGraduationCap, FaUser } from "react-icons/fa";
 import { Education } from "./Education";
 import { Experience } from "./Experience";
 import { Profil } from "./Profil";
 
 const allData = [
   {
-    icon: <RiAddBoxLine />,
+    icon: <FaUser />,
     label: "Profil",
     component: <Profil />,
   },
   {
-    icon: <RiListUnordered />,
+    icon: <FaGraduationCap />,
     label: "Educations",
     component: <Education />,
   },
   {
-    icon: <RiListUnordered />,
+    icon: <FaBriefcase />,
     label: "Experiences",
     component: <Experience />,
   },
@@ -38,7 +38,7 @@ export default function OngletAbout() {
             <div className="relative group" key={item.label}>
               <p
                 className={clsx(
-                  "px-8 max-sm:px-5 py-2 cursor-pointer flex items-center gap-2 text-caption1 font-medium",
+                  "px-8 max-sm:px-5 py-2 cursor-pointer flex items-center gap-2 text-caption1 max-[450px]:text-caption4 font-medium",
                   item === selectedTab
                     ? "selecte bg-secondary/5 rounded-t"
                     : " hover:bg-secondary-200/10 transition"
@@ -58,7 +58,7 @@ export default function OngletAbout() {
             </div>
           ))}
         </div>
-        <div className="flex justify-center flex-grow w-full select-none h-[630px] relative bg-white dark:bg-gray-800">
+        <div className="flex justify-center items-center flex-grow w-full p-5 select-none min-h-[600px] relative bg-white dark:bg-gray-800 rounded">
           <AnimatePresence mode="wait">
             <motion.div
               key={selectedTab ? selectedTab.label : "empty"}

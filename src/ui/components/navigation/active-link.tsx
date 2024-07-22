@@ -28,7 +28,9 @@ export const ActiveLink = ({ href, children, className, onClick }: Props) => {
       className={clsx(className, "pt-6 pb-6 relative group")}
       onClick={() => {
         handleLinkClick(href);
-        onClick;
+        if (onClick) {
+          onClick();
+        }
       }}
     >
       {children}

@@ -1,5 +1,6 @@
 import { LinkType } from "@/lib/link-type";
 import { Container } from "@/ui/components/container/Container";
+import TypedText from "@/ui/components/typed-text/TypedTexte";
 import { Background } from "@/ui/design-system/background/Background";
 import { Button } from "@/ui/design-system/button/Button";
 import { Typography } from "@/ui/design-system/typography/Typography";
@@ -41,10 +42,12 @@ export const HomeView = () => {
           <Typography
             variant="h1"
             component="h1"
-            className="mx-w-lg dark:text-white"
+            className="mx-w-lg dark:text-white typewriter"
             weight="bold"
           >
-            Brondone <br /> ANDRIAMBOLOLOMANANA
+            <TypedText text="Brondone" />
+            <br />
+            <TypedText text="ANDRIAMBOLOLOMANANA" />
           </Typography>
           <div>
             <Typography
@@ -61,12 +64,12 @@ export const HomeView = () => {
               component="h2"
               className="font-bold"
             >
-              Web Developper
+              Web Developer
             </Typography>
           </div>
           <div className="space-x-5 pt-2.5 flex items-center max-md:justify-center">
             <Button
-              baseUrl="/projet-marketing.pdf"
+              baseUrl="#"
               linkType={LinkType.EXTERNAL}
               icon={{ icon: AiOutlineDownload }}
               className="dark:shadow-3xl animate-bounce"
