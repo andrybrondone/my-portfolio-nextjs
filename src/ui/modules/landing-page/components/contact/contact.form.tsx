@@ -3,6 +3,8 @@ import { Input } from "@/ui/design-system/forms/Input";
 import { Textarea } from "@/ui/design-system/forms/Textarea";
 import axios from "axios";
 import { Form, Formik, FormikHelpers } from "formik";
+import { useRef, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 
@@ -11,6 +13,7 @@ interface FormContactProps {
   email: string;
   subject: string;
   content: string;
+  recaptchaToken: string;
 }
 
 const emailRegex =
@@ -21,6 +24,7 @@ const initialValues: FormContactProps = {
   email: "",
   subject: "",
   content: "",
+  recaptchaToken: "",
 };
 
 const validationSchema = Yup.object().shape({
@@ -38,16 +42,38 @@ const validationSchema = Yup.object().shape({
     .required("Ce champ est obligatoire"),
 });
 
+const url_api = "https://send-email-api-nodejs.onrender.com";
+
 export const ContactForm = () => {
+  const [reCaptchaToken, setReCaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+
+  const handleRecaptcha = (value: string | null) => {
+    setReCaptchaToken(value);
+  };
+
   const onSubmit = (
     data: FormContactProps,
     actions: FormikHelpers<FormContactProps>
   ) => {
+    if (reCaptchaToken) {
+      data.recaptchaToken = reCaptchaToken;
+    }
+
     axios
-      .post("https://send-email-api-nodejs.onrender.com/api/send-email", data)
-      .then(() => {
-        toast.success("L'e-mail à bien été envoyé");
-        actions.resetForm();
+      .post(`${url_api}/api/send-email`, data)
+      .then((res) => {
+        if (res.data.error === "error") {
+          toast.error(res.data.message);
+        } else {
+          toast.success("L'e-mail à bien été envoyé");
+          actions.resetForm();
+          setReCaptchaToken(null);
+
+          if (recaptchaRef.current) {
+            recaptchaRef.current.reset();
+          }
+        }
       })
       .catch((error) => {
         if (
@@ -71,7 +97,7 @@ export const ContactForm = () => {
         validationSchema={validationSchema}
       >
         {({ isSubmitting }) => (
-          <Form className="pt-8 pb-5 space-y-4">
+          <Form className="pt-8 pb-5">
             <div className="flex justify-center gap-2 ">
               <Input name="name" type="text" placeholder="Full name *" />
               <Input
@@ -83,6 +109,13 @@ export const ContactForm = () => {
             <Input name="subject" type="text" placeholder="Subject *" />
             <Textarea name="content" type="text" placeholder="Content *" />
 
+            <div className="h-20 mb-5">
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={process.env.RECAPTCHA_SITE_KEY as string}
+                onChange={handleRecaptcha}
+              />
+            </div>
             <div className="flex justify-center items-center ">
               <Button
                 isLoading={isSubmitting}

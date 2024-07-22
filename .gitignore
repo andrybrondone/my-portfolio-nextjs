@@ -5,8 +5,10 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
-.env
+.firebaserc
+firebase.json
 .firebase
+.env
 
 # testing
 /coverage

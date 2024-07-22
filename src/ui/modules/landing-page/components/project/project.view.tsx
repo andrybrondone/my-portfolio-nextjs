@@ -25,7 +25,7 @@ const projectData: ProjectListInterface[] = [
     description:
       "A university grade management app for adding grades, and generating reports.",
     appUrl: "https://gestion-note-univ.web.app/",
-    gitUrl: "",
+    gitUrl: "https://github.com/andrybrondone/gestion_note_univ-front",
   },
   {
     imagePath: "/assets/svg/1.svg",
@@ -34,7 +34,7 @@ const projectData: ProjectListInterface[] = [
     description:
       "A basic CRUD application for creating, reading, updating, and deleting records.",
     appUrl: "https://crud-location.web.app/",
-    gitUrl: "",
+    gitUrl: "https://github.com/andrybrondone/CRUD-react-express-front",
   },
   {
     imagePath: "/assets/images/tic-tac-toe.png",
@@ -42,16 +42,9 @@ const projectData: ProjectListInterface[] = [
     title: "Tic-Tac-Toe Game",
     description:
       "A classic Tic-Tac-Toe game built with ReactJS, featuring player vs. player mode.",
-    appUrl: "",
-    gitUrl: "",
+    appUrl: "https://tic-tac-toe-gm.web.app/",
+    gitUrl: "https://github.com/andrybrondone/tic-tac-toe-game",
   },
-  // {
-  //   imagePath: "/assets/images/write-33360_640.png",
-  //   imageAlt: "illustration",
-  //   title: "[ 2020-2021 ] - Terminal D",
-  //   description:
-  //     "Obtantion de mon baccalaureat serie D avec montien Bien ! avec montien Bien !",
-  // },
 ];
 
 export const ProjectView = () => {
@@ -135,7 +128,7 @@ export const ProjectView = () => {
             <div className="flex-center-lg">
               <Button
                 variant="secondary"
-                baseUrl="https://github.com/andrybrondone"
+                baseUrl="https://github.com/andrybrondone/my-portfolio-nextjs"
                 linkType={LinkType.EXTERNAL}
                 icon={{ icon: RiGithubFill }}
               >
